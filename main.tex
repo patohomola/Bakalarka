@@ -1,0 +1,177 @@
+\documentclass[12pt]{article}
+
+% Essential Packages
+\usepackage[main=slovak,english]{babel}
+\usepackage{setspace}
+\usepackage{pdfpages}
+\usepackage{newtxtext} % Times New Roman
+\usepackage[a4paper, left=3.5cm, right=2cm, top=2.5cm, bottom=2.5cm]{geometry} % Margins
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\usepackage{tocbibind}
+\usepackage{fancyhdr}
+\usepackage[acronym]{glossaries}
+\usepackage{url}
+\usepackage{caption}
+\usepackage{csquotes}
+\usepackage{longtable}
+
+\usepackage[T1]{fontenc} % Formatting
+\usepackage[utf8]{inputenc}
+
+% Optional packages
+\usepackage{listings}% Code blocks with syntax highlighting:
+%\usepackage{hyperref} % PDF hyperlinks
+
+% ‼️‼️‼️‼️ Choose thesis type ‼️‼️‼️‼️
+% Uncomment only one of the following lines:
+%\def\isBachelorThesis{1} % Bachelor thesis
+\def\isMasterThesis{1} % Master thesis
+
+% Thesis metadata
+% Bachelor thesis info
+\ifdefined\isBachelorThesis
+\title{Názov bakalárskej práce}
+\author{Janko Mrkvička}
+\def\thesisHeader{Bakalárska práca} 
+\fi
+
+% Master thesis info 
+\ifdefined\isMasterThesis
+\title{Názov diplomovej práce}
+\author{Bc. Janko Mrkvička}
+\def\thesisHeader{Diplomová práca}
+\fi
+
+\def\uid{FI-123456-12345} % Replace with your own student ID
+\def\supervisor{doc. RNDr. Severín Hrot, PhD.}
+\def\consultant{Mgr. Ignác Novák} % Optional, remove in titlepage-alt
+\def\thesisyear{2026}
+
+% University metadata
+\def\university{PANEURÓPSKA VYSOKÁ ŠKOLA}
+\def\faculty{Fakulta Informatiky}
+\def\program{Aplikovaná informatika}
+\def\fieldofstudy{Informatika}
+\def\department{Ústav aplikovanej informatiky}
+
+% Bibliography configuration for STN ISO 690
+% style = iso-authoryear, iso-numeric
+% use \parencite{} or \textcite{} when using iso-authoryear
+% use \cite{} when using iso-numeric
+\usepackage[
+    style=iso-authoryear,
+    ]{biblatex}
+\addbibresource{essentials/bibliography.bib}
+
+% Formatting commands
+\onehalfspacing % 1.5 line spacing
+%
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}%
+
+% Loading Acronyms
+\makeglossaries
+\loadglsentries{essentials/acronyms}
+
+% Left align figure/table label
+\captionsetup{
+    justification=raggedright,
+    singlelinecheck=false
+}
+
+% Default image options
+\setkeys{Gin}{width=0.9\textwidth}  % Set default image width to 90% of text width
+\makeatletter
+\g@addto@macro\@floatboxreset{\centering}  % Centers all figures by default
+\makeatother
+
+% Exclude appendices from adding to list of figures and hide labels
+\newenvironment{appendixfigure}
+    {\begin{figure}[h]
+        \renewcommand{\addcontentsline}[3]{}
+        \renewcommand{\caption}[1]{}}
+    {\end{figure}}
+
+% Code styling (if using listings package)
+\lstset{
+    basicstyle=\ttfamily\small,          % Sets monospace font in small size
+    breaklines=true,                     % Enables automatic line breaking for long lines
+    showstringspaces=false,              % Hides visible spaces in strings
+    keywordstyle=\color{blue},           % Makes keywords blue
+    commentstyle=\color{green!60!black}, % Makes comments dark green
+    stringstyle=\color{red},             % Makes strings red
+    backgroundcolor=\color{gray!10},     % Light gray background (10% gray)
+    frame=single,                        % Adds a single frame around the code
+    framesep=5pt                         % Space between frame and code
+}
+
+% Redefine listing caption name
+\renewcommand{\lstlistingname}{Výpis}
+\renewcommand{\lstlistlistingname}{Zoznam výpisov}
+
+% Document start
+\begin{document}
+\selectlanguage{slovak}
+
+% Essentials
+\include{essentials/titlepage}
+\include{essentials/titlepage-alt}
+%
+% Replace file with your own:
+\includepdf{essentials/assignment.pdf}
+%
+% Customize these files:
+\include{essentials/acknowledgment}
+\include{essentials/declaration}
+\include{essentials/abstract}
+
+% Print Table of Contents, List of Figures
+\tableofcontents
+\pagebreak
+\listoffigures
+\pagebreak
+
+% Print Glossary
+\glsaddall % Optional for printing all acronyms, even if not used
+\addcontentsline{toc}{section}{Zoznam skratiek a značiek}
+\printglossary[type=\acronymtype,title={Zoznam skratiek a značiek}]
+
+
+
+%%%%%%% DOCUMENT BODY %%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Úvod}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu lacus leo. Nulla egestas purus non dignissim tincidunt. In sit amet tellus bibendum, lobortis magna ut, sodales mi. Etiam vel eros efficitur purus ultrices vulputate et quis justo. Nunc ultrices tellus a dui mattis, eget laoreet arcu tempor. Donec vestibulum, magna ac fringilla lacinia, libero risus fringilla arcu, nec consectetur nibh justo vel sem. Quisque gravida sit amet elit ut aliquam...\par
+\vspace{1em}
+\noindent
+V prvej kapitole je popísaný súčasný stav riešenia problematiky. Popísaná je konštrukcia takého systému, ktorý ....
+
+\noindent
+V druhej kapitole prezentujeme návrh systému ...
+
+\noindent
+V tretej kapitole sme sa zaoberali popisom implementácie systému...
+
+% Examples:
+\include{examples/examples} 
+
+\section{Záver}
+Nezabudnite na Záver a zhodnotenie.\\  
+Cieľ bakalárskej práce bol splnený.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Bibliography
+\newpage
+\printbibliography[title={Použitá literatúra}]
+\addcontentsline{toc}{section}{Použitá literatúra}
+
+% Appendices
+\include{essentials/appendices}
+
+\end{document}

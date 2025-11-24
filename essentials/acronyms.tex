@@ -1,0 +1,31 @@
+% Set Acronym style
+\newacronymstyle{single-table}
+{%
+    \GlsUseAcrEntryDispStyle{long-short}%
+}
+{%
+    %\renewcommand*{\glossarysection}[2][]{}%
+    \renewcommand{\glossentry}[2]{%
+        \textbf{\glsentryshort{##1}} & \glsentrylong{##1} \newline \glsentrydesc{##1} \tabularnewline[3em]  % Spacing between entries
+    }%
+    \renewcommand{\glsgroupheading}[1]{}%
+    \renewcommand{\glsgroupskip}{}%
+    \renewenvironment{theglossary}%
+    {\begin{longtable}{@{}p{0.15\linewidth}p{0.85\linewidth}@{}}}%
+    {\end{longtable}\pagebreak}%
+}
+\setacronymstyle{single-table}
+
+% Define Acronyms with description
+
+\newacronym
+[description={Univerzálny jazyk pre vizuálne modelovanie systémov}]
+{UML}{UML}{Unified Modeling Language}
+
+\newacronym
+[description={Jazyk pre špecifikáciu obmedzení, dotazov a vyhľadávacích operácií v UML}]
+{OCL}{OCL}{Object Constraint Language}
+
+\newacronym
+[description={Notácia pre modelovanie business procesov}]
+{BPMN}{BPMN}{Business Process Model and Notation}

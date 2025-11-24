@@ -1,0 +1,38 @@
+% Redefine the abstract environment to align the title and content to the left
+\makeatletter
+\renewenvironment{abstract}{
+    \if@twocolumn
+        \section*{\abstractname}%
+    \else
+        \normalfont\small
+        \begin{flushleft} % Change from center to flushleft
+            {\bfseries \abstractname\par}%
+        \end{flushleft}%
+        \noindent\raggedright
+    \fi
+}
+{
+    \if@twocolumn\else\par\fi
+}
+\makeatother
+
+\begin{abstract}
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu lacus leo. Nulla egestas purus non dignissim tincidunt. In sit amet tellus bibendum, lobortis magna ut, sodales mi. Etiam vel eros efficitur purus ultrices vulputate et quis justo. Nunc ultrices tellus a dui mattis, eget laoreet arcu tempor. Donec vestibulum, magna ac fringilla lacinia, libero risus fringilla arcu, nec consectetur nibh justo vel sem. Quisque gravida sit amet elit ut aliquam.\\
+    \hfill \break
+    Abstrakt obsahuje informáciu o cieľoch práce, jej stručnom obsahu a v závere abstraktu sa charakterizuje splnenie cieľa, výsledky a význam celej práce. Súčasťou abstraktu je 3 - 5 kľúčových slov.
+\vspace{1em}\\
+\textbf{Kľúčové slová:} Kľúčové slovo 1, Kľúčové slovo 2, Kľúčové slovo 3
+
+\end{abstract}
+\pagebreak
+\begin{otherlanguage}{english}
+\begin{abstract}
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu lacus leo. Nulla egestas purus non dignissim tincidunt. In sit amet tellus bibendum, lobortis magna ut, sodales mi. Etiam vel eros efficitur purus ultrices vulputate et quis justo. Nunc ultrices tellus a dui mattis, eget laoreet arcu tempor. Donec vestibulum, magna ac fringilla lacinia, libero risus fringilla arcu, nec consectetur nibh justo vel sem. Quisque gravida sit amet elit ut aliquam.\\ 
+    \hfill \break
+    Abstrakty v anglickom a slovenskom jazyku sa musia zhodovať.
+\vspace{1em}\\
+\textbf{Keywords:} Keyword 1, Keyword 2, Keyword 3
+\end{abstract}
+\end{otherlanguage}
