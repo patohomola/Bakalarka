@@ -1,0 +1,23 @@
+
+Najskôr som stiahol potrebný dataset a pripravil prostredie Dorado, ktoré je určené na spracovanie sekvenačných dát.
+
+
+
+
+
+Následne som spustil basecaller Dorado, ktorým som preložil súbory vo formáte pod5 do formátu BAM, čo umožňuje ďalšie spracovanie dát.
+
+
+Potom som použil algoritmus Clover, ktorý zoskupil sekvencie do jednotlivých klastrov na základe ich podobnosti.
+
+
+Zo všetkých vytvorených klastrov som vybral tie, ktoré boli dostatočne veľké na ďalšiu analýzu.
+
+
+Na každý vybraný cluster som aplikoval nástroj Medaka, aby som vytvoril konsenzuálnu sekvenciu pre daný cluster.
+
+
+Pre každú katicu (k-mer) z konsenzuálnej sekvencie som vybral reprezentatívnu katicu z alignovaných sekvencií v danom clustri.
+
+
+Nakoniec som všetky získané dáta uložil pre ďalšie spracovanie alebo analýzu.

@@ -1,0 +1,40 @@
+\typeout{TEST-START}
+% Define a section
+\section{Nanopore}
+% Use an acronym
+
+Nanopore je technológia používaná na sekvenovanie DNA a RNA molekúl. Táto metóda umožňuje čítanie genetického materiálu tým, že molekuly prechádzajú cez nanometrové póry, čo vedie k zmene elektrického prúdu, ktorý je následne analyzovaný na určenie sekvencie nukleotidov. 
+Je to revolučná technológia v oblasti genomiky, ktorá umožňuje rýchle a presné sekvenovanie s minimálnymi nákladmi a zariadeniami prenosných veľkostí.
+Aplikácie nanopórov zahŕňajú diagnostiku chorôb, výskum genetických porúch a monitorovanie environmentálnych vzoriek.
+
+Nanopore sekvenovanie je obzvlášť užitočné pre jeho schopnosť čítať dlhé sekvencie DNA, čo zjednodušuje zostavovanie genómov a identifikáciu štruktúrnych variácií.
+Funguje na princípe detekcie zmien v elektrickom prúde, keď molekula prechádza cez nanopór, čo umožňuje priame čítanie sekvencií bez potreby amplifikácie alebo značenia.
+DNA alebo RNA molekuly sú vedené cez nanopór pomocou elektrického poľa, pričom každá báza spôsobuje charakteristickú zmenu prúdu, ktorá je zaznamenaná a analyzovaná softvérom na určenie sekvencie.
+
+\subsection{Prekladanie DNa/Mra do signálu}
+
+Prekladanie DNA alebo RNA sekvencií do elektrického signálu v nanopórovom sekvenovaní zahŕňa niekoľko kľúčových krokov:
+\begin{itemize}
+    \item \textbf{Príprava vzorky:} DNA alebo RNA molekuly sú pripravené na sekvenovanie, často zahŕňajúce fragmentáciu a pridanie adaptérnych sekvencií.
+    \item \textbf{Vedenie cez nanopór:} Molekuly sú vedené cez nanopór pomocou elektrického poľa, ktoré spôsobuje ich pohyb.
+    \item \textbf{Detekcia prúdu:} Keď molekula prechádza cez nanopór, každá báza spôsobuje charakteristickú zmenu v elektrickom prúde, ktorý je zaznamenaný ako časová séria dát.
+    \item \textbf{Analýza signálu:} Zaznamenaný elektrický signál je analyzovaný pomocou algoritmov na identifikáciu sekvencie nukleotidov na základe zmien prúdu.
+    \item \textbf{Preklad do sekvencie:} Softvér prekladá analyzovaný signál späť do sekvencie DNA alebo RNA, čo umožňuje výskumníkom získať genetické informácie z pôvodnej molekuly.
+\end{itemize}
+
+% vysvetli aky vystup dostaneme. A preco vela dna retazcov sa precita niekolkokrat.
+Výstupom z procesu nanopórového sekvenovania je sekvencia nukleotidov (A, T, C, G pre DNA alebo A, U, C, G pre RNA) reprezentujúca genetickú informáciu pôvodnej molekuly. Tento výstup je často vo forme textového súboru (napríklad FASTQ formát), ktorý obsahuje sekvencie spolu s kvalitatívnymi skóre pre každú bázu. 
+Vzhľadom na technické obmedzenia a variabilitu v procese sekvenovania je bežné, že jednotlivé DNA alebo RNA retiazce sú prečítané niekoľkokrát (tzv. "coverage" alebo "depth of coverage"). Toto opakované čítanie zvyšuje spoľahlivosť a presnosť výslednej sekvencie, pretože umožňuje korekciu chýb a identifikáciu variácií v genetickom materiáli.
+No napriek tomu, že sa retiazce čítajú viackrát, stále môže dôjsť k nepresnostiam v sekvencii kvôli šumu v signáli.
+
+% vysvetli ako dna cita signal. za rovnako precitane dna retazce mozu mat rozdielny signal.
+
+% Ako mozu pri citani dna vzniknut chyby.
+
+% Dna sa neskopiruje dokonale.
+
+% dna sa cita rozne rychlo.
+Retazce DNA alebo RNA môžu byť čítané rôznou rýchlosťou počas nanopórového sekvenovania, čo môže ovplyvniť kvalitu a presnosť zaznamenaného signálu. Rýchlosť prechodu molekuly cez nanopór je ovplyvnená viacerými faktormi, vrátane veľkosti molekuly, jej konformácie, interakcií s nanopórom a podmienok prostredia (napríklad teplota a iónová sila).
+
+%Dna je velmi male a preto dostaneme signal pre kazdu katicu v dna molekule.
+Keďže DNA a RNA molekuly sú veľmi malé, signál zaznamenaný počas nanopórového sekvenovania odráža interakcie jednotlivých nukleotidov (báz) s nanopórom. Každá báza má jedinečný tvar a elektrické vlastnosti, ktoré ovplyvňujú spôsob, akým mení elektrický prúd pri prechode cez nanopór. Preto je možné získať signál pre každú jednotlivú bázu v molekule, čo umožňuje presné čítanie sekvencie.

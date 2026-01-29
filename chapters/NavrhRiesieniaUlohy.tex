@@ -1,0 +1,24 @@
+\subsection{Navrh riesenia}
+
+% zamer je dostat dostaocne data
+% najprv nechat precitat dna s basecallerom
+% potom ziskat dna retazce dostacnym coverage
+% cim viac coverage tym pravdepodobnejsie ze konzesus z multialignment bude reprezentovat realny vstup.
+% moze stat ze dna bolo zle duplicovane preto konzesus moze mat chiby alebo vznika nejaka systematicka chyba.
+% mame tym padom vstup a vela vystupnych dat mozem urobit mapu katic na ich vystupny signal.
+
+% vysvetku co najviac mundane a laickou recou proces navrhu riesenia
+Navrhnutie riešenia úlohy simulácie chýb pri čítaní DNA pomocou nanopórového sekvenovania zahŕňa niekoľko kľúčových krokov.
+Cieľom je vytvoriť systém, ktorý dokáže generovať realistické chyby v DNA sekvenciách na základe pravdepodobností chýb pozorovaných v skutočných nanopórových dátach.
+
+% realny retazec vela vystupov vysledo
+%idea by bol vstup a vela vystupov
+Aby sme mohli dosiahnuť tento cieľ, najprv je potrebné získať reálne DNA sekvencie a ich zodpovedajúce výstupy z nanopórového sekvenovania. Tieto dáta budú slúžiť ako základ pre analýzu a modelovanie chýb.
+% tiez aby bolo vela vystopov na jeden vstup
+Pre každý reálny DNA reťazec je potrebné získať dostatočné množstvo výstupných sekvencií, ktoré boli generované počas sekvenovania. Čím väčšie množstvo výstupov máme pre jeden vstupný reťazec, tým lepšie môžeme pochopiť variabilitu a pravdepodobnosti chýb, ktoré sa vyskytujú počas procesu sekvenovania.
+
+Problem je ze nevieme Ake je realne dna.
+%riesenie je zhlukovanim ked najdeme dostatok dna patriaci jednemu zhluku
+Riesenie tohto problému spočíva v použití techník zhlukovania (clustering) na identifikáciu skupín výstupných sekvencií, ktoré pravdepodobne pochádzajú z rovnakého pôvodného DNA reťazca. Týmto spôsobom môžeme vytvoriť konsenzuálny reťazec pre každý zhluk, ktorý bude slúžiť ako náš "reálny" vstupný reťazec.
+Cim vacsi zhluk najdeme, tym vacsia sanca ze konzesus bude reprezentovat realny vstup a tym lepsie data pre nasu analýzu generované dna.
+Týmto spôsobom získame nielen reálny reťazec, ale aj informácie o tom, akými chybami sa tento reťazec líšil od jednotlivých výstupov. Pre každú bázu v reálnom reťazci tak môžeme vytvoriť mapu, ktorá ukazuje, na aký reťazec bola táto báza prečítaná v rôznych výstupoch.

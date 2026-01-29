@@ -1,0 +1,60 @@
+
+
+Viacnásobné zarovnanie sekvencií (Multiple Sequence Alignment, MSA) je proces usporiadania troch alebo viacerých biologických sekvencií (DNA, RNA alebo proteínov) tak, aby boli identifikované podobné regióny medzi nimi. Tieto podobnosti môžu odhaliť štrukturálne, funkčné alebo evolučné vzťahy medzi sekvenciami.
+
+\section{Základný princíp}
+
+Pri viacnásobnom zarovnaní sekvencií hľadáme také usporiadanie, ktoré maximalizuje podobnosť medzi všetkými sekvenciami súčasne. Do sekvencií sú vkladané medzery (gap characters, značené pomlčkou `-`), aby sa zodpovedajúce pozície dostali do rovnakých stĺpcov.
+
+\subsection{Príklad zarovnania}
+
+Majme tri jednoduché sekvencie:
+\begin{itemize}
+    \item Sekvencia 1: \texttt{ACGT}
+    \item Sekvencia 2: \texttt{AGT}
+    \item Sekvencia 3: \texttt{ACCT}
+\end{itemize}
+
+Ich zarovnanie môže vyzerať nasledovne:
+
+\begin{verbatim}
+Seq1: A C G T
+Seq2: A - G T
+Seq3: A C C T
+\end{verbatim}
+
+\section{Význam a využitie}
+
+Viacnásobné zarovnanie má niekoľko dôležitých aplikácií:
+
+\begin{itemize}
+    \item \textbf{Fylogenéza} -- konštrukcia evolučných stromov
+    \item \textbf{Identifikácia konzervovaných motívov} -- nálezenie funkčne dôležitých oblastí
+    \item \textbf{Predikcia štruktúry} -- odvodenie sekundárnej a terciárnej štruktúry proteínov
+    \item \textbf{Homológia} -- určenie príbuznosti medzi sekvenciami
+\end{itemize}
+
+\section{Zložitosť problému}
+
+Viacnásobné zarovnanie je výpočtovo náročný problém. Presné riešenie pomocou dynamického programovania má časovú zložitosť $O(L^n)$, kde $L$ je dĺžka sekvencií a $n$ je ich počet. Preto sa v praxi používajú heuristické algoritmy.
+
+\section{Skórovacia funkcia}
+
+Kvalita zarovnania sa hodnotí pomocou skórovacej funkcie, ktorá typicky obsahuje:
+
+\begin{itemize}
+    \item \textbf{Match score} -- bodovanie zhody medzi znakmi
+    \item \textbf{Mismatch penalty} -- penalizácia za nezhodu
+    \item \textbf{Gap penalty} -- penalizácia za medzery (môže byť lineárna alebo afinná)
+\end{itemize}
+
+\section{Bežné algoritmy}
+
+Medzi najpoužívanejšie algoritmy pre MSA patria:
+
+\begin{itemize}
+    \item \textbf{ClustalW/ClustalOmega} -- progresívne zarovnanie pomocou sprievodného stromu
+    \item \textbf{MUSCLE} -- rýchly progresívny algoritmus s iteratívnym spresňovaním
+    \item \textbf{T-Coffee} -- kombinuje párové zarovnania do finálneho MSA
+    \item \textbf{MAFFT} -- využíva FFT pre rýchle nálezenie homológnych oblastí
+\end{itemize}

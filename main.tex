@@ -1,23 +1,31 @@
+%!LW recipe=pdflatex → makeglossaries → biber → pdflatex ×2
+%\PassOptionsToPackage{table}{xcolor}
 \documentclass[12pt]{article}
 
 % Essential Packages
+\usepackage{xcolor}
 \usepackage[main=slovak,english]{babel}
 \usepackage{setspace}
-\usepackage{pdfpages}
 \usepackage{newtxtext} % Times New Roman
 \usepackage[a4paper, left=3.5cm, right=2cm, top=2.5cm, bottom=2.5cm]{geometry} % Margins
 \usepackage{graphicx}
-\usepackage[table]{xcolor}
+
+\usepackage{pdfpages}
 \usepackage{tocbibind}
 \usepackage{fancyhdr}
+\usepackage{longtable}
 \usepackage[acronym]{glossaries}
 \usepackage{url}
 \usepackage{caption}
 \usepackage{csquotes}
-\usepackage{longtable}
+
 
 \usepackage[T1]{fontenc} % Formatting
 \usepackage[utf8]{inputenc}
+
+% Required for certain glossary styles
+\usepackage{longtable}
+\usepackage{array}
 
 % Optional packages
 \usepackage{listings}% Code blocks with syntax highlighting:
@@ -25,26 +33,26 @@
 
 % ‼️‼️‼️‼️ Choose thesis type ‼️‼️‼️‼️
 % Uncomment only one of the following lines:
-%\def\isBachelorThesis{1} % Bachelor thesis
-\def\isMasterThesis{1} % Master thesis
+\def\isBachelorThesis{1} % Bachelor thesis
+%\def\isMasterThesis{1} % Master thesis
 
 % Thesis metadata
 % Bachelor thesis info
 \ifdefined\isBachelorThesis
-\title{Názov bakalárskej práce}
-\author{Janko Mrkvička}
+\title{Pomocne Algorithmy na tvorbu Dna Kanalov pre Sekvencovanie}
+\author{Patrik Homola}
 \def\thesisHeader{Bakalárska práca} 
 \fi
 
 % Master thesis info 
 \ifdefined\isMasterThesis
 \title{Názov diplomovej práce}
-\author{Bc. Janko Mrkvička}
+\author{Bc. Peter Farkas}
 \def\thesisHeader{Diplomová práca}
 \fi
 
 \def\uid{FI-123456-12345} % Replace with your own student ID
-\def\supervisor{doc. RNDr. Severín Hrot, PhD.}
+\def\supervisor{doc. RNDr. Peter Farkas, PhD.}
 \def\consultant{Mgr. Ignác Novák} % Optional, remove in titlepage-alt
 \def\thesisyear{2026}
 
@@ -60,9 +68,11 @@
 % use \parencite{} or \textcite{} when using iso-authoryear
 % use \cite{} when using iso-numeric
 \usepackage[
+    backend=biber,
     style=iso-authoryear,
     ]{biblatex}
 \addbibresource{essentials/bibliography.bib}
+
 
 % Formatting commands
 \onehalfspacing % 1.5 line spacing
@@ -142,26 +152,35 @@
 
 
 
+
 %%%%%%% DOCUMENT BODY %%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Úvod}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu lacus leo. Nulla egestas purus non dignissim tincidunt. In sit amet tellus bibendum, lobortis magna ut, sodales mi. Etiam vel eros efficitur purus ultrices vulputate et quis justo. Nunc ultrices tellus a dui mattis, eget laoreet arcu tempor. Donec vestibulum, magna ac fringilla lacinia, libero risus fringilla arcu, nec consectetur nibh justo vel sem. Quisque gravida sit amet elit ut aliquam...\par
-\vspace{1em}
-\noindent
-V prvej kapitole je popísaný súčasný stav riešenia problematiky. Popísaná je konštrukcia takého systému, ktorý ....
+V tejto bakalárskej práci sa venujem problematike ukladania dát do DNA a spracovaniu sekvenačných dát získaných pomocou nanopórového sekvenovania. Práca je rozdelená do niekoľkých kapitol, ktoré postupne predstavujú motiváciu, teoretické východiská, návrh riešenia, implementáciu a vyhodnotenie výsledkov.
 
-\noindent
-V druhej kapitole prezentujeme návrh systému ...
+\include{chapters/motivacia}
 
-\noindent
-V tretej kapitole sme sa zaoberali popisom implementácie systému...
+\section{Ciele a zadanie práce}
+\include{chapters/NaplnUlohy}
 
-% Examples:
-\include{examples/examples} 
+\section{Návrh riešenia}
+\include{chapters/NavrhRiesieniaUlohy}
+
+\section{Technologické pozadie}
+Táto časť predstavuje základné technológie a algoritmy použité v práci.
+\include{chapters/Nanopore}
+\include{chapters/Dorado}
+
+\section{Metódy spracovania sekvencií}
+\include{chapters/Cluster}
+\include{chapters/MultiAlignment}
+
+\section{Vlastná implementácia a experimenty}
+V tejto kapitole popisujem konkrétne kroky, ktoré som vykonal počas riešenia práce, vrátane spracovania dát, aplikácie algoritmov a vyhodnotenia výsledkov.
+\include{chapters/WhatHaveIDoneSoFar/MyWork}
 
 \section{Záver}
-Nezabudnite na Záver a zhodnotenie.\\  
-Cieľ bakalárskej práce bol splnený.
+V práci som predstavil možnosti a výzvy spojené s ukladaním dát do DNA a spracovaním sekvenačných dát z nanopórového sekvenovania. Navrhnuté a implementované metódy prispievajú k efektívnejšiemu spracovaniu a analýze týchto dát. Cieľ bakalárskej práce bol splnený.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -172,6 +191,6 @@ Cieľ bakalárskej práce bol splnený.
 \addcontentsline{toc}{section}{Použitá literatúra}
 
 % Appendices
-\include{essentials/appendices}
+%\include{essentials/appendices}
 
 \end{document}
