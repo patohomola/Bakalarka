@@ -1,4 +1,4 @@
-\subsection{Navrh riesenia}
+%\subsection{Navrh riesenia}
 
 % zamer je dostat dostaocne data
 % najprv nechat precitat dna s basecallerom
@@ -22,3 +22,6 @@ Problem je ze nevieme Ake je realne dna.
 Riesenie tohto problému spočíva v použití techník zhlukovania (clustering) na identifikáciu skupín výstupných sekvencií, ktoré pravdepodobne pochádzajú z rovnakého pôvodného DNA reťazca. Týmto spôsobom môžeme vytvoriť konsenzuálny reťazec pre každý zhluk, ktorý bude slúžiť ako náš "reálny" vstupný reťazec.
 Cim vacsi zhluk najdeme, tym vacsia sanca ze konzesus bude reprezentovat realny vstup a tym lepsie data pre nasu analýzu generované dna.
 Týmto spôsobom získame nielen reálny reťazec, ale aj informácie o tom, akými chybami sa tento reťazec líšil od jednotlivých výstupov. Pre každú bázu v reálnom reťazci tak môžeme vytvoriť mapu, ktorá ukazuje, na aký reťazec bola táto báza prečítaná v rôznych výstupoch.
+
+% ziskame mapu katic na ich vystupny signal
+Táto mapa nám umožní analyzovať pravdepodobnosti rôznych typov chýb (napríklad zámienky, vloženia, vynechania) pre každú bázu v reálnom reťazci. Na základe týchto informácií môžeme vytvoriť model, ktorý bude schopný simulovať tieto chyby pri generovaní nových DNA sekvencií.
