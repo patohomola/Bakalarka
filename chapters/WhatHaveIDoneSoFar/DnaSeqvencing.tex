@@ -1,0 +1,25 @@
+\section{Bio Informatics Analysis of Nanopore Sequencing Data Using Dorado Basecaller and Clover Clustering Algorithm}
+Najprv som stiahol potrebný dataset z verejného repozitára %Todo: doplniť odkaz na dataset
+Potom som nan zavolal Dorado basecaller, ktorý som použil na prekladanie surových pod5 súborov do formátu BAM.
+To som spravil pomocou nasledujúceho príkazu v termináli:
+\begin{verbatim}        
+dorado basecaller --input-format pod5 --output-format bam --input /cesta/k/datasetu --output /cesta/k/vystupu
+\end{verbatim}
+tam som si musel stiahnuť a nainštalovat Dorado, potom na zaklade pod5 datasetu som stiahnut dorado triedu, ktorá je určená na spracovanie daného datasetu. 
+Na zaklade toho cez aky Nanopore bol dataset získaný.
+po spracovaní Dorado basecallera som získal BAM súbor, ktorý obsahoval preložené sekvencie po 1000000 sekvencií dlkzy 1000000
+To trvalo približne X hodín, v závislosti od veľkosti datasetu a výpočtovej kapacity použitého hardvéru. %
+Následne som použil algoritmus Clover, ktorý zoskupil sekvencie do jednotlivých klastrov na základe ich podobnosti.
+Problem je ze Clover nebere ako vstup BAM súbory, ale potrebuje textový formát FASTA alebo FASTQ, takže som musel najprv previesť BAM súbory do text formátu pomocou nástroja samtools. % Todo: doplniť odkaz na nástroj samtools
+Po prevedení som spustil Clover, ktorý zoskupil sekvencie do jednotlivých klastrov na základe ich podobnosti.
+Nastroj Clover my vratil subor ktory mal strukturu polia ktory obsahoval dvojicecelych cisel, kde prve cislo reprezentovalo ID sekvencie a druhe cislo reprezentovalo ID Sekvencie Prvej Sekvencie, do ktoreho bola sekvencia zaradena.
+Zo všetkých vytvorených klastrov som vybral tie, ktoré boli dostatočne veľké na ďalšiu analýzu.
+Ale Ukazalo sa ze dna v klastroch neboli zhodne dalej ako par nukleotidov, co znamenalo ze som mal dna vobec neboli klastrovane spravne.
+Neskvor som zistil ze clover zarovnava iba podla zaciatku retazca a neberie do uvahy zhodu dalej v retazci, co znamenalo ze som mal v jednom klustri sekvencie ktore mali zhodu iba na zaciatku a dalej sa rozchadzali.
+Jedenm klaster obsahoval viac akom 37000 sekvencií, co bolo neobvykle veľké množstvo sekvencií v jednom klustri ktore mali cez dlzku ako 43 nukleotidov zhodne, co bolo nepravdepodobné, že by sa stalo náhodou.
+Vznikla teoria ze som narazil na dna Primer %Todo: doplniť odkaz na dna primer a vysvetlit ho.
+Potom co som vytvoril konzesus prvich 43 nukletidov.
+Na zaklade tejto informacie som naprogamoval vlastný skript v jazyku Python, ktorý pouzival kniznicu Biopython, A rozbehol som ho na vsetky vetvy a pouzil som ho na odelenie dna primerov od zvyšku sekvencií.
+Potom som dane sekvencie znovu zoskupil pomocou Clover, ale tentokrát som použil iba zvyšné časti sekvencií bez dna primerov.
+Data odcistene od dna primerov sa znovu zoskupili do klastrov, ktoré teraz obsahovali sekvencie, ktoré mali zhodu nielen na začiatku, ale aj ďalej v retazci.
+

@@ -1,0 +1,331 @@
+\subsection{Vlastný algoritmus zarovnania viacerých sekvencií}
+
+\begin{comment}
+\begin{lstlisting}[language=Python, caption={MultiAlignment v Kode kódu v Pythone}, label={lst:python-example}]
+def NaiveMultiAlignment(lines: list[Line], max_score_drop: int = 20) -> list[Line]:
+    """
+    Naive multi-sequence alignment (beam search style).
+
+    lines = list[Line]
+    """
+    finished: list[Line] = []
+    max_distance = 0
+    step = 0
+    consensus = ""
+    while True:
+        step += 1
+        # --- Beam pruning: drop lines far behind best ---
+        best_per_index: dict[int, int] = {}
+        best_Consensus: dict[int, Optional[str]] = {}
+
+        for l in lines:
+            if l.dna_index not in best_per_index:
+                best_per_index[l.dna_index] = l.line_score
+                best_Consensus[l.dna_index] = l.getNextNucleoid()
+            else:
+                best_per_index[l.dna_index] = max(best_per_index[l.dna_index], l.line_score)
+
+        for l in finished:
+            if l.dna_index not in best_per_index:
+                best_per_index[l.dna_index] = l.line_score
+            else:
+                best_per_index[l.dna_index] = max(best_per_index[l.dna_index], l.line_score)
+
+        # Drop only lines that fall too far behind *their own dna_index group*
+        filtered: list[Line] = []
+        for l in lines:
+            if l.line_score >= best_per_index[l.dna_index] - max_score_drop:
+                filtered.append(l)
+
+        lines = filtered
+
+        for line in lines:
+            if line.seq_index >= line.dnaLenSeq():
+                finished.append(line)
+            if max_distance > 0:
+                finished.append(line)
+
+        finished = deduplicate_lines(finished)
+
+        # Filter only active (not finished) lines
+        active = [l for l in lines if l.seq_index < l.dnaLenSeq()]
+        if len(active) == 0:
+            break
+
+        # --- Majority vote nucleoid (most common next nucleotide) ---
+        base_counts = Counter(best_Consensus.values())
+        most_common = base_counts.most_common(1)[0][0]
+        consensus+=most_common
+
+        most_common_base, most_common_count = base_counts.most_common(1)[0]
+        fraction_on_most_common = most_common_count / len(best_Consensus.values())
+
+        if (fraction_on_most_common < 0.5):
+            # Its clearly there are no same lines at all
+            max_distance = step
+            if lines:
+                lines[0].database.SetMaxIndex(step)
+            for line in lines:
+                finished.append(line)
+            finished = deduplicate_lines(finished)
+            break
+
+        # --- Expand all lines using this nucleotide ---
+        new_lines: list[Line] = []
+        for l in active:
+            extended = l.linesFromNextNucleod(most_common)
+            new_lines.extend(extended)
+
+        lines = deduplicate_lines(new_lines)
+
+        # Safety: If no lines left, stop
+        if not lines:
+            break
+
+    # Return all final results sorted by best score
+    finished=Select_Best_Align(finished)
+    finished.sort(key=lambda l: l.line_score, reverse=True)
+
+    print("consensus =", consensus)
+    return finished
+\end{lstlisting}
+
+\begin{lstlisting}
+    class Line:
+    database: SeqDnaMap
+    prev_Dna_line: Optional[Line]
+    dna_index: int = 0
+    dna_back_track_seq: str = ""
+    seq_index: int = 0
+    line_score: int = 0
+
+    def __init__(self, seqDnaRef: SeqDnaMap, dna_index: int) -> None:
+        self.database = seqDnaRef
+        self.dna_index = dna_index
+        self.dna_back_track_seq = ""
+        self.seq_index = 0
+        self.line_score = 0
+        self.dna_maxIndex = -1
+        self.prev_Dna_line = None
+
+    def getNextNucleoid(self) -> Optional[str]:
+        """Return next nucleotide in dna_seq, or None if at end."""
+        dna_seq = self.database.Get_dna(self.dna_index)
+        '''if self.database.GetMaxIndex() != -1:
+            if self.seq_index >= self.database.GetMaxIndex():
+                return None'''
+        if self.seq_index >= len(dna_seq):
+            return None
+        return dna_seq[self.seq_index]
+
+    def linesFromNextNucleod(self, dnaNucleoid: Optional[str]) -> list[Line]:
+        """
+        Compare the next nucleotide with dnaNucleoid.
+        Return possible continuation lines (with errors).
+        """
+        myNucleoid = self.getNextNucleoid()
+
+        # --- PERFECT MATCH ---
+        if dnaNucleoid == myNucleoid:
+            #new_line = Line(self.database, self.dna_index)
+            self.seq_index +=1
+            self.dna_back_track_seq += dnaNucleoid
+            self.line_score += 1
+            return [self]
+
+        # --- ERRORS ---
+        errorLines = []
+
+        # BASELINE ERROR (replace)
+        replace_line = Line(self.database, self.dna_index)
+        replace_line.seq_index = self.seq_index + 1
+        replace_line.prev_Dna_line = self
+        replace_line.line_score = self.line_score - 4
+        replace_line.dna_back_track_seq = ""+ myNucleoid #myNucleoid.lower() + "_"
+        errorLines.append(replace_line)
+
+        # --- DELETION ---
+        dna_del = Line(self.database, self.dna_index)
+        dna_del.seq_index = self.seq_index       # skip the match (deletion)
+        dna_del.prev_Dna_line=self
+        dna_del.line_score = self.line_score - 4
+        dna_del.dna_back_track_seq = "" + "_"
+        errorLines.append(dna_del)
+
+        # --- INSERTION ---
+        dna_ins = Line(self.database, self.dna_index)
+        dna_ins.prev_Dna_line=self
+        dna_ins.seq_index = self.seq_index
+        dna_ins.line_score = self.line_score
+        dna_ins.dna_back_track_seq = ""
+
+        # add inserted bases until match
+        while True:
+            next_base = dna_ins.getNextNucleoid()
+            if next_base is None:
+                break  # reached end of sequence
+
+            if next_base == dnaNucleoid:
+                # match finally found
+                dna_ins.dna_back_track_seq += next_base
+                dna_ins.seq_index += 1
+                dna_ins.line_score += 1
+                break
+
+            # still inserting errors
+            dna_ins.dna_back_track_seq += next_base.lower()
+            dna_ins.seq_index += 1
+            dna_ins.line_score -= 4
+
+        errorLines.append(dna_ins)
+        return errorLines
+
+    def getBacktrackRecursive(self) -> str:
+        if self.prev_Dna_line is None:
+            return self.dna_back_track_seq
+        return self.prev_Dna_line.getBacktrackRecursive() + self.dna_back_track_seq
+
+    def dnaLenSeq(self) -> int:
+        return len(self.database.Get_dna(self.dna_index))
+
+    def getUnalignedPart(self) -> str:
+        dna_seq = self.database.Get_dna(self.dna_index)
+        return dna_seq[self.seq_index:]
+\end{lstlisting}
+\end{comment}
+Multiple sequence alignment (MSA) je problém zarovnania viacerých sekvencií, ktorý sa často vyskytuje v bioinformatike. Cieľom MSA je nájsť optimálne zarovnanie medzi viacerými sekvenciami, ktoré minimalizuje počet nesúladov a medzier. V tejto časti popisujem vlastný algoritmus na zarovnanie viacerých sekvencií, ktorý som implementoval v Pythone.
+\\
+\\Pre tento Algoritmus predpokladám, že máme k dispozícii sequencie DNA z zhlukovania od algoritmu clover, ktory zhlukuje sekvencie, podla toho, ako začínajú. Takze mozeme predpokladat, ze zaciatok sekvencii v jednom zhluku je rovnaky a zarovnanie zacina od zaciatku a dalej sa rozvetvuje kvoli chybam, ktore sa vyskytuju pri citani dna.
+Algoritmus využíva prístup podobný beam search, kde pre každú sekvenciu udržiavame množinu možných zarovnaní (vetiev) a iteratívne ich rozširujeme o ďalší znak z konsenzuálnej sekvencie. Pri každom kroku vyberáme najčastejší znak (konsenzus) a generujeme nové vetvy pre každý možný typ chyby (zhoda, zámienka, vloženie, vynechanie). Vetvy sú následne filtrované na základe skóre, aby sme udržali len tie najpravdepodobnejšie zarovnania. Tento proces pokračuje, kým nedosiahneme koniec všetkých sekvencií alebo kým sa seqvencie nezacnú výrazne odlišovat od seba, čo indikuje, že neexistuje jasný konsenzus.
+
+\begin{comment}
+    Formálna špecifikácia vstupu/výstupu
+Čo presne vstupuje (zhluk sekvencií, predpoklad spoločného začiatku), čo je výsledok (zarovnania, skóre, konsenzus).
+
+Skórovacia funkcia
+Presné hodnoty za match/mismatch/insert/delete a prečo sú zvolené práve takto.
+
+Reprezentácia stavu (Line)
+Význam polí (seq_index, line_score, prev_Dna_line, backtrack) a ako umožňujú rekonštrukciu zarovnania.
+
+Prerezávanie stavov (beam-like pruning)
+max_score_drop, threshold_score, deduplikácia; vplyv na kvalitu vs. rýchlosť.
+
+Konsenzus krok (majority vote)
+Ako sa volí ďalší nukleotid, čo sa deje pri slabej zhode (< 0.5), prečo je to stop podmienka.
+
+Zložitosť
+Aspoň odhad času/pamäte (bez pruningu vs. s pruningom), ktoré parametre ju najviac ovplyvňujú.
+
+Hraničné prípady
+Krátke sekvencie, veľa chýb, rôzne dĺžky, úplná nezhoda v strede.
+
+Porovnanie s klasickými MSA prístupmi
+V čom je rozdiel oproti progresívnemu MSA / DP prístupom a kde je metóda vhodná.
+
+Experimentálne vyhodnotenie
+Dáta, metriky (accuracy, runtime), tabuľka výsledkov pre rôzne nastavenia parametrov.
+
+Limity a budúce vylepšenia
+Adaptívne skóre, lepší konsenzus, dynamický beam width, paralelizácia.
+\end{comment}
+
+\begin{algorithm}
+\caption{Stav jednej vetvy zarovnania}\label{alg:alignment-state}
+\begin{algorithmic}
+    \State \textbf{record} $AlignmentState$
+    \State \, $score$ : aktuálne skóre vetvy
+    \State \, $dna$ : spracovávaná DNA sekvencia
+    \State \, $position$ : aktuálna pozícia v sekvencii
+    \State \, $backtrack$ : postupnosť symbolov $\{=, I, D, M\}$
+
+    \Function{NextBase}{$state$}
+        \If{$state.position < |state.dna|$}
+            \State \Return $state.dna[state.position]$
+        \EndIf
+        \State \Return $None$
+    \EndFunction
+
+    \Function{UpdateState}{$state, \Delta score, advance, symbol$}
+        \State $state.score \gets state.score + \Delta score$
+        \If{$advance$}
+            \State $state.position \gets state.position + 1$
+        \EndIf
+        \State append $symbol$ to $state.backtrack$
+    \EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+              
+
+\begin{algorithm}
+\caption{Generovanie kandidátov pre jednu vetvu}\label{alg:generate-candidates}
+\begin{algorithmic}
+    \Function{GenerateCandidates}{$consensus, state$}
+        \If{\Call{NextBase}{$state$} $= consensus$}
+            \State \Call{UpdateState}{$state$, $MatchReward$, true, $=$}
+            \State \Return $[state]$
+        \EndIf
+
+        \State $mismatch \gets$ kópia $state$
+        \State \Call{UpdateState}{$mismatch$, $-MismatchPenalty$, true, $M$}
+
+        \State $deletion \gets$ kópia $state$
+        \State \Call{UpdateState}{$deletion$, $-DeletionGapPenalty$, false, $D$}
+
+        \State $insertion \gets$ kópia $state$
+        \While{\Call{NextBase}{$insertion$} $\neq consensus$}
+            \State \Call{UpdateState}{$insertion$, $-InsertionGapPenalty$, true, $I$}
+        \EndWhile
+        
+        \State \Call{UpdateState}{$insertion$, $MatchReward$, true, $=$}
+        
+
+        \State \Return $[mismatch, insertion, deletion]$
+    \EndFunction
+\end{algorithmic}
+\end{algorithm}    
+
+\begin{algorithm}
+\caption{Multi-Alignment}\label{alg:cap}
+\begin{algorithmic}
+    \Require zoznam stavov $lines$
+    \While{true}
+        \State $bestCandidates \gets$ najlepšia vetva pre každú vstupnú sekvenciu v $lines$
+        \State $consensus \gets$ najčastejšia hodnota \Call{NextBase}{$candidate$} pre $candidate \in bestCandidates$
+
+        \State $newLines \gets [\ ]$
+        \ForAll{$line \in lines$}
+            \State pridaj všetky prvky z \Call{GenerateCandidates}{$consensus, line$} do $newLines$
+        \EndFor
+        \State $lines \gets newLines$
+        \State odstráň vetvy, ktoré pre rovnakú sekvenciu a rovnakú pozíciu maju horšie skóre než iná vetva
+        \State odstráň vetvy so skóre nižším než $threshold\_score$
+
+        \If{menej než $threshold\_ratio$ z $bestCandidates$ podporuje $consensus$}
+            \State \Return $bestCandidates$
+        \EndIf
+    \EndWhile
+\end{algorithmic}
+\end{algorithm}
+\subsubsection{Vysvetlenie Generovanie Kandidátov}
+
+\paragraph{Príklad zarovnania DNA sekvencií s konzenzom}
+
+\begin{align*}
+\text{Konsenzus:} \quad &   \texttt{TGAC-----------TGAC} \\
+\text{Sekvencia}_1: \quad & \texttt{TGACgagcTGAC}\\
+& \texttt{------------A-------------------} 
+\end{align*}
+
+\begin{align*}
+\text{Konsenzus:} \quad &   \texttt{TGACGAGCTGAC}\\
+\text{Sekvencia}_1: \quad & \texttt{TGAC-----------TGAC}\\ 
+& \texttt{------------A-------------------} 
+\end{align*}
+
+\begin{align*}
+\text{Konsenzus:} \quad &   \texttt{TGACGAGCTGAC}\\
+\text{Sekvencia}_1: \quad & \texttt{TGACtAGCTGAC}\\ 
+& \texttt{------------A-------------------} 
+\end{align*}
