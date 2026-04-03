@@ -1,0 +1,29 @@
+\begin{lstlisting}[language=Python, caption={Clustering without primers}, label={lst:python-clustering-without-primers}]
+ClusterFile = TextFileM(path="clusters_output.txt")
+ClusterFile = ClusterFile.load()
+ClusterFile = parse_tuple_file(ClusterFile)
+ClusterFile = get_clusters(ClusterFile)
+clusters = ClusterFile.data
+
+#ClusterFile = pick_largest_cluster(ClusterFile)
+#LargestCluster = []
+#LargestCluster = ClusterFile.data
+
+clusters = [l for l in clusters if len(l) > 10]
+count=1
+for clust in clusters:
+    ClusterFile.data=clust
+    ClusterFile = retrieve_dna_lines(ClusterFile, clover_input_path)
+    DataToBeAligned = ClusterFile.data
+
+    ClusterSize = len(DataToBeAligned)
+    (Aligned, Unaligned) = DataBeamAlgorithmSplit(DataToBeAligned, 10)
+    dist = len(Aligned[0].replace("_",""))
+    if len(Aligned[0].replace("_",""))<10:
+        continue
+
+    Aligned.insert(0,str(clust))
+
+    TextFileM(data=Aligned).write_data_to_file(f"GeneratedData/Aligned_dnaSize-{dist}num-{ClusterSize}id-{count}.txt")
+    count+=1
+\end{lstlisting}

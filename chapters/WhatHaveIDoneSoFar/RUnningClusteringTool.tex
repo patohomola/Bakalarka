@@ -1,0 +1,18 @@
+Nato aby som mohol spustiť Klastrovaci nastroj, musel som prekonvertovat data z bam do txt formatu.   
+\input{chapters/CodeSnipets/snippets/python-bam-to-txt}
+Nasledne som  spustil Klastrovaci nastroj s takymto nastavenim:
+\begin{lstlisting}[language=bash, caption={Running Clustering Tool}, label={lst:running-clustering-tool}]   
+    python -m clover.main  -I output.txt -O example.txt -L 150 -P 2 --no-tag
+\end{lstlisting}
+% todo: vysvetlit co su tie parametre   
+
+clover mi vratil subor ktory mal strukturu polia ktory obsahoval dvojicecelych cisel, kde prve cislo reprezentovalo ID sekvencie a druhe cislo reprezentovalo ID Prvej Sekvencie, ku ktoreho bola sekvencia zaradena.
+\input{chapters/CodeSnipets/snippets/python-clustering.tex}
+to som si prekonvertoval do polia    
+
+Potom som si vybral najvacsie klaster a pouzil ho na analyzu
+\input{chapters/CodeSnipets/snippets/python-largest-cluster.tex}
+
+Nasledne som pouzil tento klaster na ziskanie dna sekvencii ktore som vybral pre dalsi program.
+\input{chapters/CodeSnipets/snippets/python-retrieve-dna.tex}
+

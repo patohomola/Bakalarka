@@ -1,0 +1,29 @@
+\begin{lstlisting}[language=Python, caption={Stripping primers from Clover input}, label={lst:python-strip-primers}]
+    with open(clover_input_path, "r") as f:
+        lines = f.readlines()
+
+    with open(PrimersPath, "r") as f:
+        datas = f.read()
+
+    primers = ast.literal_eval(datas)
+
+    newLines = []
+    for (line, linePrimes) in zip(lines,primers):
+        prevValue = -1
+        for prime in linePrimes:
+            if(prevValue!=-1 ):
+                if prevValue-prime<50:
+                    continue
+            newline = line[prime:prevValue]
+            if(len(newline)<50):
+                continue
+            newLines.append(newline)
+            prevValue = prime
+
+    WriteLines=[]
+    for (i,line) in enumerate(newLines):
+        WriteLines.append(f"{i} {line}\n")
+
+    with open("PrimersStripClover.txt", "w") as f:
+        f.writelines(WriteLines)
+\end{lstlisting}

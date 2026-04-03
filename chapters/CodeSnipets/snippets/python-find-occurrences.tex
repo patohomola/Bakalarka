@@ -1,0 +1,43 @@
+\begin{lstlisting}[language=Python, caption={Finding occurrences of a primer in reads}, label={lst:python-find-occurrences}]
+def findOcurences(primer: str, reads: List[str]):
+    aligner = Align.PairwiseAligner()
+    aligner.mode = 'local'
+
+    aligner.match_score = 2
+    aligner.mismatch_score = -1
+    aligner.open_gap_score = -2
+    aligner.extend_gap_score = -0.5
+
+    threshold = len(primer) * 1.  # tune this!
+
+    sizeOfReads = len(reads)
+
+    PrimersFound = []
+    for read_id, read in enumerate(reads):
+        #if(read_id>10):
+        #   break
+        read = read.strip()
+
+        alignments = aligner.align(primer, read)
+        lastIds = set()
+        for i, aln in enumerate(alignments):
+            if i >= 100:
+                break
+            if aln.score < threshold:
+                # print(aln.score)
+                break
+
+            # extract positions
+            # print(aln)
+            aligned = aln.aligned
+            read_start = aligned[1][0][0]
+
+            read_end = aligned[1][-1][1]
+
+            lastIds.add(read_end)
+            # print(f"Read {read_id}: {read_start}-{read_end}, score={aln.score}")
+        if read_id % 1000 == 0:
+            print(f"Read {read_id}/ {sizeOfReads}:{lastIds}")
+        PrimersFound.append(lastIds)
+    return PrimersFound
+\end{lstlisting}

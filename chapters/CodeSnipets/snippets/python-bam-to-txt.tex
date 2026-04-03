@@ -1,0 +1,6 @@
+\begin{lstlisting}[language=Python, caption={Bam to Txt Conversion}, label={lst:python-bam-to-txt}]    
+def ConvertBamToTxt(bam, out):
+    for i, read in enumerate(bam):
+        seq = read.query_sequence  # the DNA sequence
+        out.write(f"{i} {seq}\n")
+\end{lstlisting}

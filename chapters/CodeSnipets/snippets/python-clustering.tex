@@ -1,0 +1,9 @@
+\begin{lstlisting}[language=Python, caption={Clustering Data}, label={lst:python-clustering}] 
+    tuples = m.data
+    data_sorted = sorted(tuples, key=lambda x: x[1])
+    groups = []
+
+    for k, g in itertools.groupby(data_sorted, key=lambda x: x[1]):
+        groups.append([k] + [a[0] for a in g])
+    return groups
+\end{lstlisting}

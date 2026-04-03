@@ -1,0 +1,16 @@
+\begin{lstlisting}[language=Python, caption={Retrieving DNA sequences from a cluster}, label={lst:python-retrieve-dna}]
+def retrieve_dna_lines(cluster_m: TextFileM, path):
+    cluster = cluster_m.data
+    result = []
+    with open(path, "r") as f:
+        lines = f.readlines()
+
+    for idx in cluster:
+        if idx < len(lines):
+            parts = lines[idx].split(" ", 1)
+            if idx != int(parts[0]):
+                print("IndexError")
+            if len(parts) > 1:
+                result.append(parts[1].strip())
+    return result
+\end{lstlisting}
