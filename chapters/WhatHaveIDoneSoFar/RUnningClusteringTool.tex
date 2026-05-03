@@ -4,15 +4,28 @@ Nasledne som  spustil Klastrovaci nastroj s takymto nastavenim:
 \begin{lstlisting}[language=bash, caption={Running Clustering Tool}, label={lst:running-clustering-tool}]   
     python -m clover.main  -I output.txt -O example.txt -L 150 -P 2 --no-tag
 \end{lstlisting}
-% todo: vysvetlit co su tie parametre   
+Pri spustení som použil vstupný súbor \texttt{output.txt} (\texttt{-I}) 
+a výstupný súbor \texttt{example.txt} (\texttt{-O}). Parametre majú nasledujúci význam:
+\begin{itemize}
+    \item \texttt{-I [input\_file]}: vstupný súbor. Aktuálne sú podporované formáty \texttt{txt}, \texttt{fasta} a \texttt{fastq}. Každý riadok má tvar \texttt{[index], [read]}.
+    \item \texttt{-O [output\_file\_name]}: názov výstupného súboru. Výstupný súbor bude uložený v priečinku \texttt{Clover}.
+    \item \texttt{-L [int]}: dĺžka čítania (length of read).
+    \item \texttt{-P [int]}: voľba režimu spracovania. \texttt{P=0} znamená jednovláknové/jeden proces; \texttt{P=1} a \texttt{P=2} znamenajú 4, resp. 16 procesov.
+    \item \texttt{--no-tag}: tento prepínač je potrebné pridať, ak je vstupný súbor v \uv{untagged} formáte.
+\end{itemize}
 
 clover mi vratil subor ktory mal strukturu polia ktory obsahoval dvojicecelych cisel, kde prve cislo reprezentovalo ID sekvencie a druhe cislo reprezentovalo ID Prvej Sekvencie, ku ktoreho bola sekvencia zaradena.
 \input{chapters/CodeSnipets/snippets/python-clustering.tex}
-to som si prekonvertoval do polia    
+Uvedený skript načíta výstup z nástroja Clover a prevedie ho do dátovej štruktúry vhodnej na
+ďalšie spracovanie. Konkrétne spracuje dvojice identifikátorov tak, aby bolo možné jednoducho
+zistiť, do ktorého klastra jednotlivé sekvencie patria.  
 
 Potom som si vybral najvacsie klaster a pouzil ho na analyzu
 \input{chapters/CodeSnipets/snippets/python-largest-cluster.tex}
+Tento skript prejde všetky vytvorené klastre, spočíta ich veľkosti a vyberie najväčší klaster. Vybraný klaster som následne použil ako reprezentatívnu množinu sekvencií pre ďalšie kroky analýzy.
 
 Nasledne som pouzil tento klaster na ziskanie dna sekvencii ktore som vybral pre dalsi program.
 \input{chapters/CodeSnipets/snippets/python-retrieve-dna.tex}
+Posledný skript podľa ID sekvencií z vybraného klastra dohľadá zodpovedajúce DNA sekvencie a uloží ich vo formáte vhodnom pre nasledujúci nástroj. Tým sa uzatvára príprava dát po klastrovaní.
 
+%referencia na clover: Qu G, Yan Z, Wu H. Clover: tree structure-based efficient DNA clustering for DNA-based data storage[J]. Briefings in Bioinformatics, 2022, 23(5): bbac336.

@@ -1,24 +1,19 @@
-výstup analýzy DNA získaných pomocou nanopórového sekvenovania 
-sme si stanovili ako priradenie realneho DNA reťazca ktory bol 
-presiel cez nanopore sekvenovanie k jeho zodpovedajúcemu 
-Dna nanopore vystupu prestavujuci niekolko sequencií dna, 
-ktoré vznikli pri citani dna cez nanopore sekvenovanie.
-Ja som sa rozhodol ze namiesto vedenia realneho dna reťazca
-hladania jeho respektivneho nanopore vystupu, 
-budem sa ho snažit ho vypocitat na zaklade nanopore vystupu,
-a to pomocou najdenia dostatočneho mnozstva sekvencií dna v nanopore vystupe,
-ktoré su si dostatočne podobne ze mozme predpokladat ze vznikli 
-z toho isteho dna reťazca, a na zaklade toho vypocitat konsenzus tychto sekvencií, 
-ktory by mal být velmi podobny realnemu dna reťazcu, z ktoreho vznikli.
-Dna reťazce su vsak velmi dlhe a da sa predpokladat ze budu obsahovat chyby, 
-Co sposobi ze sa budu velmi rozchadzat a budu posunute, preto chceme zistit ich multi alignment,
-aby sme robili konsenzus pre tie nukleotidy, ktore sa nachadzaju v rovnakej pozicii.
+Cieľ výstupu analýzy DNA získaných pomocou nanopórového sekvenovania je určiť vzťah medzi pôvodným DNA reťazcom a jeho pozorovanými čítaniami, ktoré vznikajú počas sekvenovania.
+Namiesto priameho priraďovania konkrétneho referenčného reťazca k jednotlivým čítaniam je zvolený opačný postup: 
+z dostupných nanopórových čítaní sa odhaduje najpravdepodobnejšia pôvodná sekvencia.
+Tento odhad je založený na identifikácii dostatočne veľkej množiny podobných sekvencií, pri ktorých možno predpokladať spoločný pôvod.
+Následne sa pre takúto skupinu vypočíta konsenzuálna sekvencia, ktorá by mala byť čo najbližšia pôvodnému DNA reťazcu.
 
+Keďže DNA reťazce sú dlhé a jednotlivé čítania obsahujú chyby, sekvencie sa môžu navzájom líšiť a byť vzájomne posunuté.
+Z tohto dôvodu je potrebné vykonať viacnásobné zarovnanie sekvencií (multiple sequence alignment), aby sa konsenzus určoval z nukleotidov nachádzajúcich sa v rovnakých pozíciách.
 
-Vystup by mal teda obsahovat niekolko navzajom zarovnanych sekvencií dna,
-a konsenzus tychto zarovnanych sekvencií. A to niekolko krat, pre viacero skupin sekvencií dna, ktore vznikli z toho isteho dna reťazca.
-Aby sme mali dostatocne pokritie napriec vsetkym variacami dna katic z dna reťazca.
+Takto definovaný výstup umožňuje vytvoriť mapu katic (k-merov) na ich výstupný signál, čo nám umožní analyzovať pravdepodobnosti rôznych typov chýb pre každú bázu v reálnom reťazci. 
+Táto mapa je kľúčová pre simuláciu chýb pri generovaní nových DNA sekvencií.
+A vsak da sa predpokladať, že jedna skupina podobných sekvencií nebude obsahovat dostatočné množstvo variácií Dna nukleitov, kompletných katic, aby sme mohli spoľahlivo odhadnúť pravdepodobnosti chýb pre všetky možné k-mery.
+kedze $4^k$ je velmi velke cislo ktore sa zvacsuje exponencialne a pri $k=4$ je to $256$. sanca ze $256$ unikatnych 4-merov bude v jednej sequencii je velmi mala. preto je potrebné zoskupiť viacero sekvecnich skupín.
 
+Požadovaný výstup preto pozostáva z viacerých skupín navzájom zarovnaných DNA sekvencií a zodpovedajúcich konsenzuálnych sekvencií pre každú skupinu.
+Takto definovaný výstup umožňuje dosiahnuť dostatočné pokrytie variácií čítaní odvodených z toho istého DNA reťazca.
 
 
 

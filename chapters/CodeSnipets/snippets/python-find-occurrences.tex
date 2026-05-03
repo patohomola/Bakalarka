@@ -14,8 +14,6 @@ def findOcurences(primer: str, reads: List[str]):
 
     PrimersFound = []
     for read_id, read in enumerate(reads):
-        #if(read_id>10):
-        #   break
         read = read.strip()
 
         alignments = aligner.align(primer, read)

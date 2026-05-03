@@ -46,7 +46,7 @@
 % Thesis metadata
 % Bachelor thesis info
 \ifdefined\isBachelorThesis
-\title{Pomocne Algorithmy na tvorbu Dna Kanalov pre Sekvencovanie}
+\title{Spracovanie udajov pre modelovanie narušenia informácie uchovavanej v DNA pamäti typu nanopor}
 \author{Patrik Homola}
 \def\thesisHeader{Bakalárska práca} 
 \fi
@@ -58,7 +58,7 @@
 \def\thesisHeader{Diplomová práca}
 \fi
 
-\def\uid{FI-123456-12345} % Replace with your own student ID
+\def\uid{FI-11145-18967} % Replace with your own student ID
 \def\supervisor{doc. RNDr. Peter Farkas, PhD.}
 \def\consultant{Mgr. Peter Jarnvars} % Optional, remove in titlepage-alt
 \def\thesisyear{2026}
@@ -163,34 +163,43 @@
 %%%%%%% DOCUMENT BODY %%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Úvod}
-V tejto bakalárskej práci sa venujem problematike ukladania dát do DNA a spracovaniu sekvenačných dát získaných pomocou nanopórového sekvenovania. Práca je rozdelená do niekoľkých kapitol, ktoré postupne predstavujú motiváciu, teoretické východiská, návrh riešenia, implementáciu a vyhodnotenie výsledkov.
+V tejto bakalárskej práci sa venujem problematike ukladania dát do DNA a spracovaniu sekvenačných dát získaných pomocou nanopórového sekvenovania. Práca je rozdelená do piatich hlavných častí: úvod, opis dát, príprava praktickej realizácie, vlastné vytvorenie riešenia a kritické zhodnotenie so zhrnutím.
 
 \include{chapters/motivacia}
 
 \section{Ciele a zadanie práce}
 \include{chapters/NaplnUlohy}
 
-\section{Návrh riešenia}
-\include{chapters/NavrhRiesieniaUlohy}
+\section{Opis dát}
+\subsection{V akom stave sú dáta k dispozícii}
+\include{chapters/WhatHaveIDoneSoFar/PopisDat/AkeDataMamDispozicii}
 
-\section{Technologické pozadie}
-Táto časť predstavuje základné technológie a algoritmy použité v práci.
+\subsection{Aké sú s tým problémy}
+\include{chapters/WhatHaveIDoneSoFar/WhatIsTheProblem/KdeSuDlheRetazce}
+\include{chapters/WhatHaveIDoneSoFar/WhatIsTheProblem/LokalneVyhladavanie}
+
+\subsection{Aký je očakávaný výstup dát a v akej forme majú byť dáta po spracovaní}
+\include{chapters/WhatHaveIDoneSoFar/PopisDat/pozadovanyVystup}
+
+
+\section{Čo bolo potrebné, aby sa riešenie dalo prakticky realizovať}
+%\include{chapters/NavrhRiesieniaUlohy}
 \include{chapters/Nanopore}
 \include{chapters/Dorado}
-
-\section{Metódy spracovania sekvencií}
 \include{chapters/Cluster}
+\include{chapters/Clover}%idk where the clover chapter go
+\include{chapters/WhatHaveIDoneSoFar/RUnningClusteringTool}
 \include{chapters/MultiAlignment}
 
-\section{Vlastná implementácia a experimenty}
-V tejto kapitole popisujem konkrétne kroky, ktoré som vykonal počas riešenia práce, vrátane spracovania dát, aplikácie algoritmov a vyhodnotenia výsledkov.
+\section{Vytvorenie práce}
+V tejto časti popisujem konkrétne kroky, ktoré som vykonal počas riešenia práce, vrátane spracovania dát, aplikácie algoritmov a vyhodnotenia výsledkov.
 \include{chapters/WhatHaveIDoneSoFar/DnaSeqvencing}
 \include{chapters/HladanIeDNaRetazci}
 %\include{chapters/CustomAlgorithm/HlavnyAlgoritmus}
 
-\section{Záver}
+\section{Kritické zhodnotenie a zhrnutie}
 V práci som predstavil možnosti a výzvy spojené s ukladaním dát do DNA a spracovaním sekvenačných dát z nanopórového sekvenovania. Navrhnuté a implementované metódy prispievajú k efektívnejšiemu spracovaniu a analýze týchto dát. Cieľ bakalárskej práce bol splnený.
-
+\include{chapters/Zaver}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

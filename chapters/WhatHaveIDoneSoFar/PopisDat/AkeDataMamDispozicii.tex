@@ -1,0 +1,16 @@
+Data boli stiahnuté z verejného repozitára, ktorý obsahoval surové sekvenačné dáta vo formátu pod5.
+Tieto dáta predstavovali čítania DNA reťazcov získané pomocou nanopórového sekvenovania.
+Data boli stiahnuté pomocou nástroja aws s použitím príkazu aws s3 cp, ktorý umožňuje kopírovať súbory z Amazon S3 úložiska do lokálneho prostredia.
+\begin{lstlisting}[language=bash]
+aws s3 sync --no-sign-request s3://ont-open-data/gm24385_2020.09 /media/marek/EAGET/gm24385_2020.09
+\end{lstlisting}
+Dáta sa stiahli do adresára \texttt{/media/marek/EAGET/gm24385\_2020.09}, a sťahovanie trvalo približne 2 hodiny, pričom celková veľkosť stiahnutých dát bola okolo x GB. %Todo: doplniť presnú veľkosť dát
+
+
+%popis data a ake su v nich komplikacie
+%treba ich prepisat basecallerom dorado do formatu bam
+%formate bam ich treba nasledne zoskupit a zarovnat.
+Data obsahovali čítania DNA reťazcov, ktoré vznikajú počas procesu nanopórového sekvenovania.
+Tieto čítania sú často dlhé a obsahujú chyby, čo predstavuje výzvu pri ich analýze.
+Aby bolo možné tieto dáta efektívne analyzovať, bolo potrebné ich prekonvertovať pomocou basecallera Dorado do formátu BAM, ktorý je štandardným formátom pre ukladanie sekvenačných dát a umožňuje efektívne spracovanie a analýzu.
+Po konverzii do formátu BAM bolo potrebné dáta zoskupiť a zarovnať, aby sa identifikovali podobné sekvencie a vytvorili konsenzuálne sekvencie, ktoré by mohli reprezentovať pôvodný DNA reťazec.
