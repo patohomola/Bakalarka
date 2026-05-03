@@ -1,5 +1,45 @@
+\subsection{Biologická syntéza DNA}
+
 Biologická syntéza DNA je proces,
 pri ktorom DNA polymeráza vytvára
+nový reťazec na základe templátového vlákna, pričom syntéza
+prebieha výlučne v smere 5'$\rightarrow$3'. Kľúčovou podmienkou začatia 
+syntézy je prítomnosť primeru, teda krátkeho komplementárneho
+oligonukleotidu, ktorý sa naviaže na templát a poskytne voľnú
+3'-OH skupinu potrebnú pre katalytickú aktivitu polymerázy. 
+Po naviazaní primeru polymeráza postupne inkorporuje deoxyribonukleotidy 
+podľa pravidiel komplementárneho párovania báz (A--T, G--C), čím predlžuje 
+vznikajúci reťazec DNA. Tento proces je nevyhnutný pre replikáciu DNA, ktorá je základom
+prenosu genetickej informácie.
+
+\subsubsection{Smer reťazca: 5'$\rightarrow$3' a 3'$\rightarrow$5'}
+
+DNA reťazec má chemickú polaritu --- jeden koniec reťazca má voľnú fosfátovú skupinu na 5' uhlíku cukru (5' koniec) a druhý koniec má voľnú hydroxylovú skupinu na 3' uhlíku (3' koniec).
+
+\begin{itemize}
+    \item \textbf{Smer 5'$\rightarrow$3'} --- smer, v ktorom DNA polymeráza syntetizuje nový reťazec. Polymeráza číta templát v smere 3'$\rightarrow$5' a zapisuje nový reťazec v smere 5'$\rightarrow$3'.
+    \item \textbf{Smer 3'$\rightarrow$5'} --- smer čítania templátového vlákna počas syntézy. Nie je možné syntetizovať reťazec v tomto smere priamo.
+\end{itemize}
+
+Táto polarita má priamy dopad na nanopórové sekvenovanie --- tá istá DNA molekula môže vstúpiť do nanopóru z ľubovoľného konca, čím vznikajú čítania v oboch smeroch (forward aj reverse). Pri spracovaní dát je preto potrebné uvažovať s oboma orientáciami.
+
+\subsubsection{Simplexný a duplexný reťazec}
+
+\begin{itemize}
+    \item \textbf{Simplex (ssDNA)} --- jednoreťazcová DNA. Obsahuje iba jedno vlákno nukleotidov. Vyskytuje sa napríklad počas replikácie alebo pri niektorých vírusoch. V kontexte nanopórového sekvenovania sa čítanie vykonáva práve na jednoreťazcovej forme.
+    \item \textbf{Duplex (dsDNA)} --- dvojreťazcová DNA. Dve komplementárne vlákna sú navzájom spojené vodíkovými väzbami medzi pármi báz (A--T, G--C) a tvoria charakteristickú dvojitú špirálu (double helix). Toto je štandardná forma, v ktorej je DNA uložená v bunke.
+\end{itemize}
+
+Pri biosyntéze DNA vzniká z jednoreťazcového templátu nový komplementárny reťazec --- výsledkom je duplexná DNA. Pre každý pôvodný reťazec tak existuje komplementárny reťazec s opačnou polaritou. To znamená, že pri nanopórovom sekvenovaní môžeme naraziť na štyri varianty toho istého úseku DNA:
+\begin{enumerate}
+    \item pôvodný reťazec v smere 5'$\rightarrow$3',
+    \item pôvodný reťazec v smere 3'$\rightarrow$5' (reverzný),
+    \item komplementárny reťazec v smere 5'$\rightarrow$3',
+    \item komplementárny reťazec v smere 3'$\rightarrow$5' (reverzný komplement).
+\end{enumerate}
+
+Tieto štyri varianty sú kľúčovým zdrojom komplikácií pri klastrovacích algoritmoch --- sekvencie reprezentujúce rovnaký úsek DNA môžu byť sekvenerom prečítané v rôznych formách a bez primerov ich nie je možné jednoducho stotožniť.
+
 nový reťazec na základe templátového vlákna, pričom syntéza
 prebieha výlučne v smere 5’→3’. Kľúčovou podmienkou začatia 
 syntézy je prítomnosť primeru, teda krátkeho komplementárneho
