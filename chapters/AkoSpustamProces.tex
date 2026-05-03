@@ -1,5 +1,5 @@
 \subsection{Ako spúšťam proces}
-Celý pipeline spracovania dát sa skladá z nasledujúcich krokov, ktoré vykonávam postupne:
+Celý pipeline spracovania dát sa skladá z nasledujúcich krokov, ktoré vykonávam postupne. Každý skript po spustení otvorí dialógové okno, v ktorom vyberiem vstupný súbor a určím, kam sa uloží výstup.
 
 \subsubsection*{Krok 1 — Preklad nanopórových dát pomocou Dorado}
 Surové nanopórové dáta preložím pomocou basecallera Dorado do formátu \texttt{.bam}:
@@ -8,37 +8,36 @@ dorado basecaller <model> <pod5_vstup> > vystup.bam
 \end{verbatim}
 
 \subsubsection*{Krok 2 — Konverzia BAM súboru do textového formátu}
-Spustím skript \texttt{CloverGenerateFyle.py}, ktorý BAM súbor preloží do textového formátu \texttt{.txt}, ktorý následne môžem použiť ako vstup pre Clover:
+Spustím skript \texttt{CloverGenerateFyle.py}. Skript otvorí tkinter dialóg na výber BAM súboru a dialóg na určenie miesta uloženia výstupného \texttt{.txt} súboru, ktorý následne môžem použiť ako vstup pre Clover:
 \begin{verbatim}
-python CloverGenerateFyle.py --input vystup.bam --output data.txt
+python CloverGenerateFyle.py
 \end{verbatim}
 
 \subsubsection*{Krok 3 — Nájdenie primeru}
-Zavolám skript \texttt{GettingPrimer.py}, ktorý na textový súbor zavolá Clover, nájde najväčší klaster a ten predá môjmu multi-klastrovaciemu algoritmu. Z neho vytiahnem najväčší klaster a na ten zavolám vlastný multi-alignment algoritmus. Výsledkom je konsenzuálna sekvencia primeru, ktorá sa uloží do súboru \texttt{primerFound.txt}:
+Zavolám skript \texttt{GettingPrimer.py}. Skript otvorí dialóg na výber textového súboru, zavolá Clover, nájde najväčší klaster a na neho zavolá vlastný multi-alignment algoritmus. Výsledkom je konsenzuálna sekvencia primeru uložená do súboru \texttt{primerFound.txt}:
 \begin{verbatim}
-python GettingPrimer.py --input data.txt --output primerFound.txt
+python GettingPrimer.py
 \end{verbatim}
 
 \subsubsection*{Krok 4 — Rozdelenie sekvencií podľa primeru}
-Spustím skript \texttt{splitDnaByPrimer.py}, ktorý vyhľadáva primer v každej sekvencii textového súboru. Nájdené primery sa ukladajú do adresára \texttt{PrimersFound}:
+Spustím skript \texttt{splitDnaByPrimer.py}. Skript otvorí dialóg na výber vstupného textového súboru a súboru \texttt{primerFound.txt}. Nájdené sekvencie s primerom sa ukladajú do adresára \texttt{PrimersFound}:
 \begin{verbatim}
-python splitDnaByPrimer.py --input data.txt --primer primerFound.txt \
-    --output PrimersFound/
+python splitDnaByPrimer.py
 \end{verbatim}
 
 \subsubsection*{Krok 5 — Vyčistenie sekvencií od primeru}
-Zavolám skript \texttt{SelectFromPrimer.py}, ktorý z predchádzajúceho textového výstupu vytvorí nový \texttt{.txt} súbor s DNA sekvenciami očistenými od primeru:
+Zavolám skript \texttt{SelectFromPrimer.py}. Skript otvorí dialóg na výber vstupného súboru a vytvorí nový \texttt{.txt} súbor s DNA sekvenciami očistenými od primeru:
 \begin{verbatim}
-python SelectFromPrimer.py --input PrimersFound/ --output data_clean.txt
+python SelectFromPrimer.py
 \end{verbatim}
 
 \subsubsection*{Krok 6 — Záverečné klastrovanie a zarovnanie}
-Nakoniec zavolám skript \texttt{postPrimerClover.py}, ktorý z dát očistených od primeru vytvorí Clover súbor, nájde klastre a začne zarovnávať. Pokiaľ nájde klastre požadovanej veľkosti (viac ako 10 nukleotidov), výsledky uloží do súborov vo formáte:
+Nakoniec zavolám skript \texttt{postPrimerClover.py}. Skript otvorí dialóg na výber vyčistených dát, zavolá Clover, nájde klastre a zarovná sekvencie. Pokiaľ nájde klastre požadovanej veľkosti (viac ako 10 nukleotidov), výsledky uloží do súborov vo formáte:
 \begin{center}
 \texttt{Aligned\_dnaSize-\{dist\}num-\{ClusterSize\}id-\{count\}.txt}
 \end{center}
 \begin{verbatim}
-python postPrimerClover.py --input data_clean.txt --output Aligned_
+python postPrimerClover.py
 \end{verbatim}
 
-Celý proces je znázornený na diagrame nižšie — každý krok nadväzuje na výstup predchádzajúceho, pričom finálnym výsledkom sú zarovnané DNA reťazce roztriedené do klastrov.
+Každý krok nadväzuje na výstup predchádzajúceho, pričom finálnym výsledkom sú zarovnané DNA reťazce roztriedené do klastrov.
