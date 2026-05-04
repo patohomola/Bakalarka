@@ -30,8 +30,23 @@ Optimalizáciou týchto procesov môžeme zvýšiť rýchlosť a presnosť uklad
 čo je kľúčové pre praktické využitie DNA ako úložného média v budúcnosti.
 
 % vmozes my vysvetlit co je to dna kanal?
-DNA kanál predstavuje špecifický spôsob, akým sú dáta kódované a ukladané do DNA molekúl.
-Tento kanál zahŕňa výber vhodných sekvencií nukleotidov, ktoré minimalizujú chyby pri čítaní 
-a zápise dát,
-ako aj optimalizáciu procesov syntézy a sekvenovania DNA. 
+DNA kanál je pojem prevzatý z teórie informácie, ktorý opisuje celý proces prenosu digitálnych dát cez DNA ako fyzikálne médium.
+Podobne ako Shannon vo svojej teórii informačného kanála \cite{Shannon1948} modeloval prenos správy cez zašumený kanál,
+aj DNA kanál možno chápať ako matematický model, v ktorom vstupné digitálne dáta prechádzajú radom fyzikálnych a chemických procesov a na výstupe
+dostaneme sekvencie, ktoré môžu obsahovať chyby vzniklé počas týchto procesov.
+
+Konkrétne sa DNA kanál skladá z nasledujúcich etáp:
+\begin{itemize}
+    \item \textbf{Kódovanie (encoding):} Digitálne bity sú prevedené na sekvenciu štyroch nukleotidov (A, T, C, G) podľa zvolenej kódovacej schémy.
+    \item \textbf{Syntéza (synthesis):} Navrhnuté DNA reťazce sú chemicky syntetizované. Počas syntézy môžu vznikať substitučné chyby (zámena bázy) alebo delécie (vynechanie bázy).
+    \item \textbf{Ukladanie (storage):} Syntetizované DNA reťazce sú fyzicky uložené, napríklad v roztoku alebo v suchom stave. Dlhodobé ukladanie môže viesť k degradácii molekúl.
+    \item \textbf{Sekvenovanie (sequencing):} Uložené reťazce sú prečítané sekvenovacou technológiou (v tejto práci nanopórovým sekvenovaním). Toto je najvýznamnejší zdroj chýb -- nanopórové sekvenovanie je náchylné na delécie, inzercie a substitúcie nukleotidov.
+    \item \textbf{Dekódovanie (decoding):} Prečítané sekvencie sú prevedené späť na digitálne dáta. Správne dekódovanie si vyžaduje opravu chýb, ktoré vznikli v predchádzajúcich etapách.
+\end{itemize}
+
+Zásadnou vlastnosťou DNA kanála, ktorá ho odlišuje od klasických komunikačných kanálov (ako je binárny symetrický kanál),
+je prevaha delécií a inzercií oproti substitúciám \cite{Organick2018Random}.
+Tieto typy chýb výrazne komplikujú návrh kódov na opravu chýb, pretože spôsobujú posunutie pozícií v sekvencii.
+Modelovanie a charakterizácia DNA kanála je preto kľúčová pre návrh efektívnych kódovacích schém a algoritmov zarovnania,
+čo je aj jedným z hlavných cieľov tejto práce.
 
