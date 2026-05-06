@@ -1,0 +1,8 @@
+\subsubsection*{Krok 6 — Záverečné klastrovanie a zarovnanie}
+Nakoniec zavolám skript \texttt{postPrimerClover.py}. Skript otvorí dialóg na výber vyčistených dát, zavolá Clover, nájde klastre a zarovná sekvencie. Pokiaľ nájde klastre požadovanej veľkosti (viac ako 10 nukleotidov), výsledky uloží do súborov vo formáte:
+\begin{center}
+\texttt{Aligned\_dnaSize-\{dist\}num-\{ClusterSize\}id-\{count\}.txt}
+\end{center}
+\begin{verbatim}
+python postPrimerClover.py
+\end{verbatim}

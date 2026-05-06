@@ -1,0 +1,47 @@
+- [ ] Doplniť ďalší bod do poznámok
+Zoznam zdrojovych Snipetov by sa hodil
+Uvod je meh ktora nasleduje motivaciou. vobec neviem ci mam pisat taky uvod treba zistit
+
+Preco uz tu spominam ciel prace v motivacii
+spomenul som dna kanal co je Dna kanal
+pouvazovat ako inak popisat dna kanal 
+viac ako vytvorit model Narusenia informacie uchovanej v dna pamati typu nanopor podobne ako nazov bakalarky
+popisat co vlastne zname (point motivacii)
+
+ulohu by som zmenil podla anotacie  uloha skvor naznacuje ako som sa pustil do tejto prace skvor
+
+ten vstup zacina fajn.
+
+opravit gramticke chybi a mozno v stup upravit do viac odstavcov
+
+4 opis dat spomenut
+velkost 10 gigaBaitov a spomen z som si ich ulozil na externi disk 
+
+vo fazy ake su stym problemy
+chyba preva cast a to problem spracovania data basecallerom do .bam
+kde treba spomenut dorado vyber medzi nastaveniami cas ze to trvalo aj 4 hodiny
+preto som sa rozhodol pre (fast)
+
+a velkost vysledneho bam suvboru.
+
+treba dodat mozno som to niekde nacnul treba zistit.
+
+4.2.1
+mozno predpoklad na miesto moze to suvisiet zmen na suvisi 
+chybovejsie? prepisat. 
+mozno by som odelil do odstavcov
+
+tieto kapytoli by mali byt rozdelene do tohto stylu 
+hypotéza 1 → experiment → zistenie → zmena prístupu → hypotéza 2 ->...
+
+treba popisat ze som zociatku nemal ziadne ponatia co data znamenali.
+1 read= 1 dna retazec neskvor som zistil ze to moze by kombinacia niekolko ktore mozu byt rozne orientovane este ktomu
+
+treba opravit gramatiku.
+
+Nato aby som mohol spustit klastrovaci nastroj je priklad zleho spisania prepis formalnejsie.
+
+pri viac nasobnom sekvencii zlozitost nespominaj 
+
+6.1 a 6 trebalo by tie kapitoli rozdelit na useky a tie useky su relevantne tam a inde.
+

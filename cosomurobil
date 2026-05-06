@@ -1,0 +1,16 @@
+Stiahol som databazu
+stiahol som dorado.
+prekonvertoval som dna tak ze som spustil dorado v subore kde som mal dorado.
+stiahol som clover.
+zistil som aky vstup clover berie. nie bam ale txt alebo fasta.
+zistil som aky vystup clover dava.
+nasiel som ~40000 kluster myslel som si za data su zarovnane.
+zistil som ze dorado zarovnava retazce iba podla zaciatku retazca.
+naprogramoval som program ktory zarovnava retazce dokym su zhodne.
+vsetky boli kratke pod 50 atomov ale ten najvacsi kluster bol tiez aj najdlhsi.
+zistil som ze je primer.
+hladal som primer readoch a ulozil som retazce za najdenim primerom po najblizsi primer alebo koniec retazca.
+primer bol najdeny iba v kazdom 4 tom retazci. co indikovalo ze zvisok opacny alebo komplement.
+tie retazce ktore som nasiel som opat klustroval cloverom.
+teraz retazce su dostatocne dlhe po zarovnanin tak aby stale zhodovali.
+mozno stoho zistit konzesus a zaroven zistit ako sa retazec lisi od konzensusu. vytvorit ten model.

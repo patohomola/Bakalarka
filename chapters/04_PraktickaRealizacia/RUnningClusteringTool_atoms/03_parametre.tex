@@ -1,0 +1,9 @@
+Pri spustení som použil vstupný súbor \texttt{output.txt} (\texttt{-I})
+a výstupný súbor \texttt{example.txt} (\texttt{-O}). Parametre majú nasledujúci význam:
+\begin{itemize}
+    \item \texttt{-I [input\_file]}: vstupný súbor. Aktuálne sú podporované formáty \texttt{txt}, \texttt{fasta} a \texttt{fastq}. Každý riadok má tvar \texttt{[index], [read]}.
+    \item \texttt{-O [output\_file\_name]}: názov výstupného súboru. Výstupný súbor bude uložený v priečinku \texttt{Clover}.
+    \item \texttt{-L [int]}: dĺžka čítania (length of read).
+    \item \texttt{-P [int]}: voľba režimu spracovania. \texttt{P=0} znamená jednovláknové/jeden proces; \texttt{P=1} a \texttt{P=2} znamenajú 4, resp. 16 procesov.
+    \item \texttt{--no-tag}: tento prepínač je potrebné pridať, ak je vstupný súbor v \uv{untagged} formáte.
+\end{itemize}

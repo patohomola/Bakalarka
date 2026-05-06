@@ -1,0 +1,9 @@
+Na spustenie basecallera som použil nasledujúci príkaz:
+\begin{verbatim}
+dorado basecaller hac <adresar_s_pod5> --recursive --max-reads 100 > testCalls.bam
+\end{verbatim}
+
+Parameter \texttt{--recursive} je potrebný na spracovanie všetkých súborov v adresári a jeho podadresároch.
+Dorado je dôležité spúšťať s prístupom k GPU — bez neho je spracovanie veľmi pomalé. Aj s GPU je spracovanie pomerne pomalé, preto je vhodné pri testovaní používať parameter \texttt{--max-reads}, čo ušetrí veľa času pri práci s miliónmi sekvencií.
+
+\cite{DoradoDocs}

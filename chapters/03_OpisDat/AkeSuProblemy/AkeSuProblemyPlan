@@ -1,0 +1,32 @@
+Ciel je rozdelit co je problem a co je postup. 
+
+a to by som rozdelil na hypotezi . 
+
+Teda vypis problemov.
+
+1. Ulohou bolo najst vhodne velky dataset dakde na internete.
+2. cim sa pripojili technicke problemy kam ulozit data tie som dal na disk
+3. trebalo stiahnut dorado prostedie
+4. zistit ako konverovatovat Pod5 datat do bam vypisu.
+5. dalsi problem bol ze clover neberie bam subory ale potrebuje txt format alebo fasta forma tak som musel napisat skript na konverziu bam do txt formatu
+6. problem bol ze clover zarovnava iba podla zaciatku retazca a neberie do uvahy zhodu dalej v retazci, co znamenalo ze som mal v jednom klustri sekvencie ktore mali zhodu iba na zaciatku a dalej sa rozchaadzali.
+pochopit ako funguje clover a preco to tak robi.  
+7. zarovnanie dna v klastroch bol problem zistit nakoniec som si urobil vlastni multialignment.
+zistiit pokial sa v klastroch su dna retazce zarovnane dalej ako zaciatok retazca.
+
+8.problem bol zistit ci su dna v skutocnosti read dna retazec.
+9. zistit ako biosynteza funguje a aky vyznam ma primer.
+10. zistit samotni primer.
+11. napisat skript na odelenie dna primerov od zvyšku sekvencií.
+
+postup:
+faza 1
+setup prostredia, stiahnutie datasetu, spracovanie datasetu pomocou dorado, konverzia bam do txt formatu.
+faza 2. spustenie cloveru pak riesenie multi alignmentu.
+faza 2. ukazalo sa ze clover zarovnava iba podla zaciatku retazca.
+faza 2 zistit co bol ten velky 47 nukleotidove zarovnanie.
+faza 2 primer najst primerov a rozdelit read na samostatne dna retazce bez primerov.
+faza 3. znovu zoskupit dna retazce bez primerov a zistit ci su zarovnane dalej ako zaciatok retazca.
+
+zaver nasiel som dostatocne dlhe zarovnanie v klastroch.
+obcas sa tych clastroch vyskitne retazec ktory tam nepatri ale to sa da odfiltrovat pomocou poctu elementov ktore nesedia

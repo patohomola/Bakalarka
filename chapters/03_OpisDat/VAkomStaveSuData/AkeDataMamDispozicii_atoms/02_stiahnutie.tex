@@ -1,0 +1,5 @@
+Data boli stiahnuté pomocou nástroja aws s použitím príkazu aws s3 cp, ktorý umožňuje kopírovať súbory z Amazon S3 úložiska do lokálneho prostredia.
+\begin{lstlisting}[language=bash]
+aws s3 sync --no-sign-request s3://ont-open-data/gm24385_2020.09 /media/marek/EAGET/gm24385_2020.09
+\end{lstlisting}
+Dáta sa stiahli do adresára \texttt{/media/marek/EAGET/gm24385\_2020.09}, a sťahovanie trvalo približne 2 hodiny, pričom celková veľkosť stiahnutých dát bola okolo x GB. %Todo: doplniť presnú veľkosť dát

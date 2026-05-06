@@ -1,0 +1,138 @@
+%!LW recipe=pdflatex → makeglossaries → biber → pdflatex ×2
+\documentclass[12pt]{article}
+
+% Essential Packages
+\usepackage{xcolor}
+\usepackage[main=slovak,english]{babel}
+\usepackage{setspace}
+\usepackage{newtxtext}
+\usepackage[a4paper, left=3.5cm, right=2cm, top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{tocbibind}
+\usepackage{fancyhdr}
+\usepackage{longtable}
+\usepackage[acronym]{glossaries}
+\usepackage{url}
+\usepackage{caption}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{comment}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+% Thesis type
+\def\isBachelorThesis{1}
+
+% Thesis metadata
+\ifdefined\isBachelorThesis
+\title{Spracovanie údajov pre modelovanie narušenia informácie uchovávanej v pamäti DNA typu nanopór}
+\author{Patrik Homola}
+\def\thesisHeader{Bakalárska práca}
+\fi
+
+\def\uid{FI-11145-18967}
+\def\supervisor{doc. RNDr. Peter Farkas, PhD.}
+\def\consultant{Mgr. Peter Jarnvars}
+\def\thesisyear{2026}
+
+\def\university{PANEURÓPSKA VYSOKÁ ŠKOLA}
+\def\faculty{Fakulta Informatiky}
+\def\program{Aplikovaná informatika}
+\def\fieldofstudy{Informatika}
+\def\department{Ústav aplikovanej informatiky}
+
+\usepackage[
+    backend=biber,
+    style=iso-numeric,
+]{biblatex}
+\addbibresource{essentials/bibliography.bib}
+
+\onehalfspacing
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\makeglossaries
+\loadglsentries{essentials/acronyms}
+
+\captionsetup{
+    justification=raggedright,
+    singlelinecheck=false
+}
+
+\setkeys{Gin}{width=0.9\textwidth}
+\makeatletter
+\g@addto@macro\@floatboxreset{\centering}
+\makeatother
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    showstringspaces=false,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    backgroundcolor=\color{gray!10},
+    frame=single,
+    framesep=5pt
+}
+
+\renewcommand{\lstlistingname}{Výpis}
+\renewcommand{\lstlistlistingname}{Zoznam výpisov}
+
+\begin{document}
+\selectlanguage{slovak}
+
+% Essentials
+\include{essentials/titlepage}
+\include{essentials/titlepage-alt}
+\includepdf{essentials/assignment.pdf}
+\include{essentials/acknowledgment}
+\include{essentials/declaration}
+\include{essentials/abstract}
+
+\tableofcontents
+\pagebreak
+\listoffigures
+\pagebreak
+\lstlistoflistings
+\pagebreak
+
+\glsaddall
+\addcontentsline{toc}{section}{Zoznam skratiek a značiek}
+\printglossary[type=\acronymtype,title={Zoznam skratiek a značiek}]
+
+%%%%%%% DOCUMENT BODY %%%%%%%
+
+\section{Úvod}
+\input{chapters/main2/uvod_a_motivacia}
+
+\section{Teoretické východiská}
+\input{chapters/main2/teoreticke_vychodiska}
+
+\section{Ciele práce a vstupné dáta}
+\input{chapters/main2/ciele_a_vstup}
+
+\section{Opis dát a identifikované problémy}
+\input{chapters/main2/data_a_problemy}
+
+\section{Praktická realizácia}
+\input{chapters/main2/prakticka_realizacia}
+
+\section{Výsledky a diskusia}
+\input{chapters/main2/vysledky_a_diskusia}
+
+\section{Záver}
+\input{chapters/main2/zaver}
+
+\newpage
+\printbibliography[title={Použitá literatúra}]
+\addcontentsline{toc}{section}{Použitá literatúra}
+
+\end{document}

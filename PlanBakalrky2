@@ -1,0 +1,43 @@
+1. Úvod
+
+Motivácia: DNA storage, nanopórové čítanie, problém chýb.
+Cieľ práce: pripraviť pipeline a podklad pre model narušenia informácie.
+2. Teoretické východiská
+
+DNA, primer, orientácia a komplement reťazca.
+Nanopore + Dorado (čo robí basecalling).
+Clover (vstupy/výstupy, princíp klastrovania).
+3. Dáta a počiatočný workflow
+
+Zdroje dát, ich formát, veľkosť.
+Krok 1: Dorado (pod5 → BAM).
+Krok 2: konverzia do formátu pre Clover (txt/fasta).
+4. Prvý experiment: priame klastrovanie
+
+Spustenie Clover na pôvodných dátach.
+Výsledok: veľký klaster (~40k), ale zhoda len na začiatku.
+Záver: pôvodný predpoklad neplatí.
+5. Zmena prístupu: primer-first stratégia
+
+Identifikácia primeru ako príčiny „falošnej“ zhody.
+Vlastný skript: nájdenie primeru v read-och.
+Extrakcia úsekov za primerom (po ďalší primer/koniec).
+Pozorovanie: primer v ~každom 4. reťazci (orientácia/komplement).
+6. Druhý experiment: klastrovanie po odstránení primeru
+
+Opätovné klastrovanie vyčistených reťazcov.
+Výsledok: dlhšie a stabilnejšie zhodné úseky po zarovnaní.
+Porovnanie s prvým experimentom.
+7. Návrh modelu narušenia informácie
+
+Konsenzus v klastri.
+Meranie odchýlok readov od konsenzu (substitúcie/indely).
+Návrh, ako z toho postaviť model chýb.
+8. Diskusia
+
+Čo fungovalo / čo nefungovalo.
+Limity (Dorado režimy, Clover heuristika, pokrytie).
+Možné zlepšenia a ďalšie experimenty.
+9. Záver
+
+Zhrnutie prínosu: od surových dát po použiteľný základ pre model.

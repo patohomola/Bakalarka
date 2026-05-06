@@ -1,0 +1,12 @@
+Súbor obsahujúci čítania z Dorado vo formáte FASTA bol načítaný do pamäte a následne bol použitý algoritmus z knižnice Biopython (modul bioAlignments), ktorý umožňuje vyhľadávať lokálne zarovnania medzi primerom a jednotlivými čítaniami.
+
+
+aligner.align(primer, read) vracia všetky lokálne zarovnania medzi primerom
+a daným čítaním zoradené podľa skóre zarovnania.
+kazdy alignment obsahuje informácie o pozícii zarovnania v celkovom reťazci
+a lokalne zarovnanom retazci, ktorý zodpovedá v nasom prípade primeru.
+je zapisaný v 3 dimenzionálnom formáte, 2 N 2, kde 1 riadok obsahuje lokalne
+zarovnany retazec, 2 riadok obsahuje celkovy retazec.
+potom kazde pole obsahuje zarvnaie odkial pokial je cast zarovnana a je to 
+rozdelene na N fragmentov, kde N je počet zarovnaných úsekov ten sa zhoduje
+s počtom fragmentov v lokalne zarovnanom retazci.
