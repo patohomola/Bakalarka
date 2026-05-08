@@ -1,0 +1,147 @@
+===================================================
+OTÁZKY A ODPOVEDE - KONTROLA BAKALÁRSKEJ PRÁCE
+===================================================
+Cieľ: Zistiť čo v bakalárke chýba, čo nie je dobre vysvetlené,
+      alebo čo nie je dostatočne obsiahnuté.
+
+Formát:
+  [ODSEK] - z ktorej časti pochádza
+  [O] Otázka
+  [A] Odpoveď
+  [STATUS] OTVORENÁ / ZODPOVEDANÁ / ZAPRACOVANÁ
+
+===================================================
+
+[ODSEK] Kap.6 / Zaver / 04_kriteria (100 bp, 10 a 50 citani)
+[O] Su prahy 100 bp, 10 a 50 citani odovodnene literaturou alebo experimentom?
+[A] Ciastocne odovodnene
+[STATUS] OTVORENÁ – doplniť jasné zdôvodnenie každého prahu (literatúra alebo vlastné experimentálne pozorovanie).
+---
+
+[ODSEK] Kap.6 / Zaver / rozsah prispevku
+[O] Je jasne oddelene co je v praci uz hotove vs co je buduci vyskum?
+[A] Treba to este vyvazit
+[STATUS] OTVORENÁ – v závere explicitne rozdeliť „Dosiahnuté výsledky“ a „Budúca práca“.
+---
+
+[ODSEK] Kap.5 / DnaSeqvencing / TODO odkazy (dataset, samtools, primer)
+[O] Planujes doplnit vsetky TODO odkazy (dataset, samtools, vysvetlenie primeru)?
+[A] Ano, vsetky TODO doplnim
+[STATUS] OTVORENÁ – doplniť pred finalnou verziou.
+---
+
+[ODSEK] Kap.5 / HladanieDnaRetazci / vlastny multialignment
+[O] V praci uvadzas vlastny multialignment. Chces ho kratko opisat funkcne bez implementacnych detailov?
+[A] Ano, popisem co robi bez implementacnych detailov
+[STATUS] OTVORENÁ – doplniť stručný funkčný popis: vstup, výstup, princíp, limity.
+---
+
+[ODSEK] Kap.5 / AkoSpustamProces / reprodukovatelnost pipeline
+[O] Je pipeline reprodukovatelna (konkretne prikazy, parametre, verzie nastrojov)?
+[A] Ano, su uvedene konkretne prikazy a verzie
+[STATUS] ZODPOVEDANÁ
+---
+
+[ODSEK] Kap.5 / AkoSpustamProces / GUI pipeline cez tkinter
+[O] Je pouzitie GUI dialogov v skriptoch cielene (user-friendly) alebo ma byt skor CLI pristup?
+[A] Ano, je to cielene GUI pipeline pre usera
+[STATUS] ZODPOVEDANÁ
+---
+
+[ODSEK] Kap.3.1 / OpisDat / 01_zdroj_dat (format pod5)
+[O] Je niekde v praci vysvetleny format pod5 (preco ONT pouziva tento format, rozdiel vs fast5)?
+[A] Ano, pod5 je vysvetleny
+[STATUS] ZODPOVEDANÁ
+---
+
+[ODSEK] Kap.3.1 / OpisDat / 02_stiahnutie (TODO velkost dat)
+[O] Je doplnena presna velkost stiahnutych dat (TODO komentar v kode)?
+[A] Planujem doplnit
+[STATUS] OTVORENÁ – doplniť presnú hodnotu GB pri AWS S3 sync príkaze.
+---
+
+[ODSEK] Kap.3.1 / OpisDat / 03_charakter_citani
+[O] Mas konkretne cisla: priemerna dlzka citani, typicka miera chyb (napr. 5-15%)?
+[A] Treba doplnit konkretne udaje
+[STATUS] OTVORENÁ – doplniť štatistiky: priemerná dĺžka čítaní, typická miera chýb napr. z literatúry alebo vlastnej analýzy.
+---
+
+[ODSEK] Kap.3.2 / KdeSuDlheRetazce / 01_dlzky_a_charakter (histogram dlzok)
+[O] Je rozsah dlzok citani (100 az 1 000 000 nt) vizualizovany histogramom?
+[A] Nie, len textovo uvedene
+[STATUS] OTVORENÁ – odporúča sa pridať histogram distribúcie dĺžok čítaní.
+---
+
+[ODSEK] Kap.3.2 / KdeSuDlheRetazce / 02_priciny_dlhych_citani (TODO vety)
+[O] Je TODO komentar "Prepisat posledne dve vety" uz opraveny?
+[A] neviem
+[STATUS] OTVORENÁ – skontrolovať a opraviť posledné dve vety v tomto atóme.
+---
+
+[ODSEK] Kap.3.2 / KdeSuDlheRetazce / 03_orientacia_a_komplement (4 varianty)
+[O] Su 4 varianty sekvencie (povodna/komplement x 2 smery) vizualizovane schemou?
+[A] Nie, len pismom
+[STATUS] OTVORENÁ – odporúča sa pridať tabuľku alebo schému 4 variantov (forward/reverse x original/komplement).
+---
+
+[ODSEK] Kap.3.2 / KdeSuDlheRetazce / 05_prva_hypoteza (DNA primer definicia)
+[O] Je pojem "DNA primer" definovany pre nebiologickeho citatela pred prvym pouzitim?
+[A] "neni definovany treba doplnit"
+[STATUS] OTVORENÁ – doplniť definíciu DNA primeru (krátka jednovláknová sekvencia ktorá slúži ako štartovací bod replikácie).
+---
+
+[ODSEK] Kap.3.2 / LokalneVyhladavanie / 02_biopython_align (nastavenia alignera)
+[O] Su vysvetlene nastavenia Biopython PairwiseAligner (skore, penalizacia, prah) ktore si zvolil a preco?
+[A] Treba pridat popis nastaveni
+[STATUS] OTVORENÁ – doplniť tabuľku alebo odsek s parametrami alignera a zdôvodniť ich výber.
+---
+
+
+
+
+
+
+
+
+
+
+[ODSEK] Kap.4 / DnaBioSynteza / prepojenie s datami
+[O] Je explicitne vysvetlene PRECO je DNA biosynteza v praci (teda ze priamo ovplyvnuje data zo sekvenovania)?
+[A] Trochu ale nie explicitne
+[STATUS] OTVORENÁ – na koniec kapitoly o biosynteze pridať explicitnu vetu spajajucu teoriu s tym co sa deje v datach.
+---
+
+
+
+
+
+[ODSEK] Kap.4 / MultiAlignment / vlastny MSA algoritmus
+[O] Ktory MSA algoritmus skutocne pouzivas a je zdovodneny vyber?
+[A] "Vlastny algoritmus, chcem urobit vlastny clanok, neviem ako to napisat ze som pouzil vlastny"
+[A2] "do stane riadky vyhody vybere zarovnany usek dokym je zarovnany"
+[A3] "algoritmus dostane riadky dna a vrati zarovnane riadky ktore zarovna do kym tie retazce budu podobne, teda nezarovna cely riadok ale cast od zaciatku"
+[STATUS] OTVORENÁ – DOLEZITE: V bakalarke treba jasne uviest: "Bol implementovany vlastny MSA algoritmus inspirovany [princip]. Detailny popis je mimo rozsahu tejto prace." Nesmiez tvrdit ze pouzivas MUSCLE/MAFFT ak pouzivas vlastny.
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[ODSEK] Kap.1 / Motivácia / 01_rast_dat.tex
+[O] Máš v texte konkrétne čísla alebo citácie na podloženie tvrdenia o exponenciálnom raste dát?
+[A] "o akom exponencii dat?"
+[A2] "chyba mi kontext"
+[STATUS] OTVORENÁ – čitateľ nemusí vedieť čo máš na mysli; treba pridať konkrétny zdroj alebo číslo (napr. IDC report)
+---
+

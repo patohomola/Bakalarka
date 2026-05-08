@@ -2,15 +2,44 @@ Cieľ výstupu analýzy DNA získaných pomocou nanopórového sekvenovania je u
 Namiesto priameho priraďovania konkrétneho referenčného reťazca k jednotlivým čítaniam je zvolený opačný postup: 
 z dostupných nanopórových čítaní sa odhaduje najpravdepodobnejšia pôvodná sekvencia.
 Tento odhad je založený na identifikácii dostatočne veľkej množiny podobných sekvencií, pri ktorých možno predpokladať spoločný pôvod.
-Následne sa pre takúto skupinu vypočíta konsenzuálna sekvencia, ktorá by mala byť čo najbližšia pôvodnému DNA reťazcu.
+Následne sa pre takúto skupinu vypočíta konsenzus, ktorý by mal byť čo najbližšie pôvodnému DNA reťazcu.
+
+\textit{Konsenzus} je syntetizovaná sekvencia zložená z nukleotidov, ktoré sa v každej pozícii zarovnaných sekvencií vyskytujú s najväčšou frekvenciou.
+Inými slovami, pre každú pozíciu v zarovnaní sa vyberie báza (A, C, G alebo T), ktorá sa v danej pozícii objavuje najčastejšie vo všetkých zarovnaných čítaniach.
+Konsenzus tak reprezentuje najlepší odhad pôvodnej DNA sekvencie na základe dostupných pozorovaní a ich spoľahlivosti.
 
 Keďže DNA reťazce sú dlhé a jednotlivé čítania obsahujú chyby, sekvencie sa môžu navzájom líšiť a byť vzájomne posunuté.
 Z tohto dôvodu je potrebné vykonať viacnásobné zarovnanie sekvencií (multiple sequence alignment), aby sa konsenzus určoval z nukleotidov nachádzajúcich sa v rovnakých pozíciách.
 
-Takto definovaný výstup umožňuje vytvoriť mapu katic (k-merov) na ich výstupný signál, čo nám umožní analyzovať pravdepodobnosti rôznych typov chýb pre každú bázu v reálnom reťazci. 
-Táto mapa je kľúčová pre simuláciu chýb pri generovaní nových DNA sekvencií.
-A vsak da sa predpokladať, že jedna skupina podobných sekvencií nebude obsahovat dostatočné množstvo variácií Dna nukleitov, kompletných katic, aby sme mohli spoľahlivo odhadnúť pravdepodobnosti chýb pre všetky možné k-mery.
-kedze $4^k$ je velmi velke cislo ktore sa zvacsuje exponencialne a pri $k=4$ je to $256$. sanca ze $256$ unikatnych 4-merov bude v jednej sequencii je velmi mala. preto je potrebné zoskupiť viacero sekvecnich skupín.
+Takto definovaný výstup umožňuje vytvoriť pravdepodobnostný model čítania DNA k-tíc (k-merov).
+Tento model sa interpretuje ako komunikačný kanál a vychádza z matematickej teórie komunikácie \\cite{Shannon1948Communication}.
+Namiesto jedného pevného výsledku sa každej k-tici priraďuje rozdelenie možných prečítaných sekvencií.
+Formálne môžeme písať
+$$
+X=\Sigma^k,\quad Y=\Sigma^*,\quad K(y\mid x)=\Pr(Y=y\mid X=x),
+$$
+kde $\Sigma=\{A,C,G,T\}$, $x\in\Sigma^k$ je pôvodná k-tica a $y\in\Sigma^*$ je prečítaná sekvencia.
+Tá môže mať aj inú dĺžku v dôsledku delécií alebo inzercií.
+
+Pre konkrétnu k-ticu, napríklad $x=\mathrm{ATCG}$, môže byť rozdelenie nasledovné:
+$$
+\Pr(Y=\mathrm{ATCG}\mid X=x)=0.33,
+$$
+$$
+\Pr(Y=\mathrm{ATTCG}\mid X=x)=0.20,
+$$
+$$
+\Pr(Y=\mathrm{TCG}\mid X=x)=0.10,
+$$
+$$
+\Pr(Y=\mathrm{AGCG}\mid X=x)=0.07.
+$$
+Zvyšná pravdepodobnosť patrí ostatným chybovým variantom tak, aby celkový súčet bol rovný 1.
+Takýto model zachytáva substitúcie, inzercie a delécie a je kľúčový pre realistickú simuláciu chýb pri generovaní nových DNA sekvencií.
+
+Zároveň platí, že jedna skupina podobných sekvencií spravidla neobsahuje dostatočný počet variácií na spoľahlivý odhad chýb pre všetky možné k-mery.
+Počet k-tíc rastie exponenciálne podľa $4^k$; napríklad pre $k=4$ ide o $256$ možných 4-merov.
+Pravdepodobnosť, že všetky tieto varianty budú dostatočne zastúpené v jednej skupine, je nízka, preto je potrebné objaviť viacero sekvenčných skupín.
 
 Požadovaný výstup preto pozostáva z viacerých skupín navzájom zarovnaných DNA sekvencií a zodpovedajúcich konsenzuálnych sekvencií pre každú skupinu.
 Takto definovaný výstup umožňuje dosiahnuť dostatočné pokrytie variácií čítaní odvodených z toho istého DNA reťazca.

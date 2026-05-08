@@ -1,4 +1,7 @@
-primery ulozim do formatu [[], [65], [55], [], [64], [], [55], [74, 73], [64], [75], [72, 70], [], [], [75], [39], [75], [], [], [72]..
-kde kazdy element zodpoveda jednému čítaniu a obsahuje pozície, kde sa primer nachádza v danom čítaní. Ako je vidno nie v kazdom retazci sa primer nachadza, ale v niektorych sa nachadza viac krat.
-je to zdvovodu bud ostatne citania obsahovali komplementarnu sekvenciu alebo sa precitali v opacnom smere, alebo sa primer nenachadza zdvovodu pretrhnutia dna retazca v roznych miestach
-alebo sa nachadza ale je prilis odlišný ze sa dostal pod mojim nastaveným thresholdom pre zarovnanie teda ho ignorujem.
+Pozície nájdených primerov boli uložené do poľa v tvare:
+\begin{verbatim}
+[[], [65], [55], [], [64], [], [55], [74, 73], [64], [75], ...]
+\end{verbatim}
+
+Každý prvok poľa zodpovedá jednému čítaniu a obsahuje pozície, na ktorých sa primer nachádza v danom čítaní. Z výsledkov vyplýva, že v nie každom reťazci bol primer identifikovaný, zatiaľ čo v niektorých čítaniach sa vyskytol viackrát.
+Tento jav môže byť spôsobený tým, že niektoré čítania obsahujú komplementárnu sekvenciu alebo boli prečítané v opačnom smere. Ďalším dôvodom môže byť pretrhnutie DNA reťazca v rôznych miestach alebo príliš nízka podobnosť primeru vzhľadom na nastavený prah zarovnania.

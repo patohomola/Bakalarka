@@ -1,0 +1,42 @@
+uvod/Motivacia
+
+teoriticke okienko
+    Nanopore
+    Biosinteza
+    primer
+    Dna kanál
+    dna simplex duplex smer 5-3 3-5
+ciel prace
+    read konzesus prehlasenie za hlavne -> 
+    aby sa stoho dalo vytvorit z toho Dna Kanal 
+vstupne data
+    pod5 stiahnute z databazi.
+ake stym boli problemy
+    priprava prostredi pre dorado stiahnutie data.
+    pochopit co vyplul basecaller.
+    je kazdy read retazec precitany doradom basecalerom automaticky zoradeny spravnom poradi(nie)
+    Su vsetky rozne retazce uplne odlisne teda sa daju zarovnat?(nie)
+    co je to primer ako ho najst(nie)
+
+
+vyber nastrojov
+    dorado Basecaller
+    clover klastrujuci nastroj
+    vlastny multialignment.
+    python bio local align.
+
+prakticke realizovanie.
+    bezanie dorado basecaler
+    bam subori do text.
+    clover prekladat text.
+    custom align to najvacsieho retazca to find primer
+    local align na vyhladavne  primerov.
+    callling clover na retazce za najdenymi primermi.
+    volanie multialigmentu na najdene retazce.
+
+zaver 
+    tvrdenie najdenie dostatok sekvencii na vytvorenie dna kanalu
+    o moznostu pouzita komplementarnych reverznych realnych retazci najdenie viac dat.
+    stiahnutie viac dat.
+    viac urovnove clover zavolanie.
+

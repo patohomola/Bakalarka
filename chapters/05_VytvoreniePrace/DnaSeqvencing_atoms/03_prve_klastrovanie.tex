@@ -1,5 +1,5 @@
-Následne som použil algoritmus Clover, ktorý zoskupil sekvencie do jednotlivých klastrov na základe ich podobnosti.
-Problem je ze Clover nebere ako vstup BAM súbory, ale potrebuje textový formát FASTA alebo FASTQ, takže som musel najprv previesť BAM súbory do text formátu pomocou nástroja samtools. % Todo: doplniť odkaz na nástroj samtools
-Po prevedení som spustil Clover, ktorý zoskupil sekvencie do jednotlivých klastrov na základe ich podobnosti.
-Nastroj Clover my vratil subor ktory mal strukturu polia ktory obsahoval dvojicecelych cisel, kde prve cislo reprezentovalo ID sekvencie a druhe cislo reprezentovalo ID Sekvencie Prvej Sekvencie, do ktoreho bola sekvencia zaradena.
-Zo všetkých vytvorených klastrov som vybral tie, ktoré boli dostatočne veľké na ďalšiu analýzu.
+Následne bol použitý algoritmus Clover, ktorý zoskupil sekvencie do jednotlivých klastrov na základe ich podobnosti.
+Problém spočíval v tom, že Clover neprijíma ako vstup súbory vo formáte BAM, ale vyžaduje textový formát FASTA alebo FASTQ. Preto bolo najprv potrebné previesť BAM súbory do textového formátu pomocou nástroja samtools. % Todo: doplniť odkaz na nástroj samtools
+Po prevode bol spustený nástroj Clover, ktorý zoskupil sekvencie do jednotlivých klastrov na základe ich podobnosti.
+Nástroj Clover vrátil súbor so štruktúrou poľa obsahujúceho dvojice celých čísel, kde prvé číslo reprezentovalo identifikátor sekvencie a druhé číslo reprezentovalo identifikátor referenčnej sekvencie klastra, do ktorého bola sekvencia zaradená.
+Zo všetkých vytvorených klastrov boli vybrané tie, ktoré boli dostatočne veľké na ďalšiu analýzu.
