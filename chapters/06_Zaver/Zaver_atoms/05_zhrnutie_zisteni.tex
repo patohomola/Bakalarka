@@ -3,3 +3,20 @@ s dostatočným zastúpením, čo umožňuje spoľahlivý výpočet konsenzu a n
 modelovanie chybovosti Nanopore čítania. Získané výsledky tvoria základ
 pre ďalší výskum v oblasti DNA pamätí, konkrétne pre charakterizáciu
 chybových modelov pri Nanopore sekvenovaní.
+Za kľúčový výsledok možno považovať skutočnosť, že zo surového signálu vo formáte
+\texttt{pod5} bolo možné získať viacero zarovnaných klastrov jedného čítania,
+pričom pipeline spoľahlivo pokrýva vstupné aj výstupné štádiá spracovania dát.
+Zároveň bolo možné identifikovať primer bez predchádzajúcej explicitnej informácie
+o jeho presnej sekvencii.
+Medzi hlavné obmedzenia práce patrila najmä náročnosť spracovania výstupov vo formáte
+\texttt{BAM} a následná identifikácia reálnych dlhých reťazcov v dátach. Významnou
+praktickou výzvou bolo aj určenie, v ktorých častiach dát sa tieto reťazce skutočne
+vyskytujú, pričom identifikácia primeru predstavovala kľúčový bod pre stabilizáciu
+ďalších krokov analýzy.
+Výsledky práce zároveň vytvárajú priestor pre nadväzujúci výskum zameraný na
+modelovanie narušenia DNA kanála, rozšírenie množiny analyzovaných dát a presnejšiu
+charakterizáciu chýb. Ďalším smerom je vyhľadávanie a klastrovanie reverzných a
+komplementárnych reťazcov, ktoré môže viesť k získaniu dodatočných informácií
+pre robustnejšie modelovanie.
+Práca vytvorila metodický a implementačný rámec, ktorý umožňuje pokračovať smerom
+k presnejšej charakterizácii chýb v nanopórovom čítaní.

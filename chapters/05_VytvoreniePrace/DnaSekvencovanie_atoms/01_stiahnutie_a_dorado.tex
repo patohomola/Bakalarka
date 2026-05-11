@@ -2,5 +2,5 @@ Najprv bol stiahnutý potrebný dataset z verejného repozitára. %Todo: doplni�
 Následne bol na dané dáta aplikovaný basecaller Dorado, ktorý slúži na preklad surových súborov vo formáte pod5 do formátu BAM.
 Transformácia bola vykonaná pomocou nasledujúceho príkazu v termináli:
 \begin{verbatim}
-dorado basecaller --input-format pod5 --output-format bam --input /cesta/k/datasetu --output /cesta/k/vystupu
+dorado basecaller fast <pod5_vstup> > vystup.bam
 \end{verbatim}

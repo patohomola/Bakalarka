@@ -4,6 +4,6 @@ dorado basecaller hac <adresar_s_pod5> --recursive --max-reads 100 > Calls.bam
 \end{verbatim}
 
 Parameter \texttt{--recursive} je potrebný na spracovanie všetkých súborov v adresári a jeho podadresároch.
-Dorado je dôležité spúšťať s prístupom k GPU — bez neho je spracovanie veľmi pomalé. Aj s GPU je spracovanie pomerne pomalé, preto je vhodné pri testovaní používať parameter \texttt{--max-reads}, čo ušetrí veľa času pri práci s miliónmi sekvencií.
 
+Parameter \texttt{--max-reads} bol nastavený na 100, ktorý limituje počet čítaní, ktoré Dorado spracuje. Tento limit je dobry na testovanie a ladenie procesu, Kedze spracovanie milionov čítaní by zabralo príliš veľa času. Pre finálne spracovanie by tento parameter mal být odstranený alebo nastavený na vyššiu hodnotu, aby sa spracovali všetky dostupné dáta.
 \cite{DoradoDocs}

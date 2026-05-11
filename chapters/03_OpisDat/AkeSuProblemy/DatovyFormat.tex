@@ -1,0 +1,19 @@
+\subsubsection{Dátový formát}
+Jedným z hlavných problémov pri spracovaní sekvenačných dát je rozdiel medzi formátom, v ktorom sú dáta publikované, a formátom vhodným na ďalšiu analýzu.
+Vstupné dáta boli dostupné najmä vo formáte \texttt{pod5}, ktorý obsahuje surový elektrický signál z nanopórového sekvenovania.
+Tento surový signál je potrebné preložiť do DNA sekvencií, ktoré sú následne použiteľné pre klastrovanie a viacnásobné zarovnanie.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{chapters/Figures/Pod5Signal1}
+\caption{Príklad surového signálu z nanopore senzoru - signal trace pre jeden kanál. Graf ukazuje elektrický prúd (v pA) meraný v čase počas prechodu DNA molekuly nanopórou.}
+\label{fig:pod5_signal1}
+\end{figure}
+
+Po preklade signálu nástrojom Dorado vzniká výstup vo formáte \texttt{BAM}, ktorý síce obsahuje prečítané sekvencie, ale pre ďalšie kroky bolo potrebné údaje transformovať do jednoduchšieho textového tvaru.
+
+Taktiež dáta spracované klastrovaním algoritmom Clover poskytovali výstup v špecifickom formáte, ktorý je potrebné ďalej spracovať, aby bolo možné získať samotné klastre a následne ich zarovnať a získať konsenzus.
+
+%zformuj do akademického neosobného štýlu.
+Samotné dáta boli rozsiahle, ich sťahovanie trvalo dlhý čas a spracovanie nástrojom Dorado basecallerom trvalo pol dňa v najrýchlejšom režime.
+Tiež bolo potrebné stiahnuť predinštalovaný nástroj Dorado, ktorý zaberal veľa miesta v pamäti. 
