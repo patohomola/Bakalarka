@@ -5,12 +5,12 @@
 
 %dorado download --list
 %dorado download --model dna_r10.4.1_e8.2_400bps_hac@v4.2.0
-Dorado trebalo stiahnut
-dorado download --model dna_r10.4.1_e8.2_400bps_hac@v4.2.0 dorado bolo potrebne stiahnut model
-Dorado malo viacerou modou hac a fast, fast je rychlejsi ale menej kvalitny, hac je pomalejsi ale kvalitnejsi sup mod 
+Dorado bolo potrebné stiahnuť.
+dorado download --model dna_r10.4.1_e8.2_400bps_hac@v4.2.0
+V nástroji Dorado sú dostupné viaceré režimy, napríklad hac a fast; režim fast je rýchlejší, ale menej presný, zatiaľ čo režim hac je pomalší a kvalitnejší.
 dorado basecaller hac ../../../../media/marek/EAGET/Bioinformatic/MMC234__202311/ --recursive --max-reads 100 > testCalls.bam
---recursive je potrebne pridat ak chceme spracovat vsetky subory v adresari a jeho podadresaroch
-dorado mozme travat je dolezite mat dostup k GPU, bez toho je to velmi pomale, a aj s nim je to pomerne pomale, preto je vhodne pouzivat parameter --max-reads aby sme mohli testovat na mensom mnozstve dat a ziskat rychlejsie vysledky. co usetri vela casu kedze ratame aj s milionvimi vysledkami.
+Parameter --recursive je potrebné pridať, ak sa majú spracovať všetky súbory v adresári a jeho podadresároch.
+Spracovanie nástrojom Dorado môže trvať dlhší čas, preto je dôležitý prístup ku GPU; bez neho je spracovanie veľmi pomalé. Aj pri použití GPU je vhodné používať parameter --max-reads, aby bolo možné testovať na menšom množstve dát a získať rýchlejšie výsledky, čo šetrí čas pri práci s miliónmi čítaní.
 
 
 % dokumentaion: https://software-docs.nanoporetech.com/dorado/latest/basecaller/basecall_overview/

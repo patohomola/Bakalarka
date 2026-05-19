@@ -3,9 +3,9 @@ Zoznam zdrojovych Snipetov by sa hodil
 Uvod je meh ktora nasleduje motivaciou. vobec neviem ci mam pisat taky uvod treba zistit
 
 Preco uz tu spominam ciel prace v motivacii
-spomenul som dna kanal co je Dna kanal
-pouvazovat ako inak popisat dna kanal 
-viac ako vytvorit model Narusenia informacie uchovanej v dna pamati typu nanopor podobne ako nazov bakalarky
+spomenul som DNA kanal co je Dna kanal
+pouvazovat ako inak popisat DNA kanal 
+viac ako vytvorit model Narusenia informacie uchovanej v DNA pamati typu nanopor podobne ako nazov bakalarky
 popisat co vlastne zname (point motivacii)
 
 ulohu by som zmenil podla anotacie  uloha skvor naznacuje ako som sa pustil do tejto prace skvor
@@ -35,7 +35,7 @@ tieto kapytoli by mali byt rozdelene do tohto stylu
 hypotéza 1 → experiment → zistenie → zmena prístupu → hypotéza 2 ->...
 
 treba popisat ze som zociatku nemal ziadne ponatia co data znamenali.
-1 read= 1 dna retazec neskvor som zistil ze to moze by kombinacia niekolko ktore mozu byt rozne orientovane este ktomu
+1 read= 1 DNA retazec neskvor som zistil ze to moze by kombinacia niekolko ktore mozu byt rozne orientovane este ktomu
 
 treba opravit gramatiku.
 

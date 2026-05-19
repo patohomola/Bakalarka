@@ -1,8 +1,8 @@
 1 vec prelozin nanopore data doradom do .bam
 2. nasledne spustim CloverGenerateFyle.py ktora mi bam file prelozi do .txt a ten nasledne mozem pouzit na clover.
 nasledne zavolam script GettingPrimer ktory na ten .txt zavola ten najde najvacsi cluster a ten da do mojho multi clusteringu sktoreho vytiahnem najvacis clustqer
-a nan zavolam vlastni multialignment algoritmus ktory mi vrati primer a ulozi ho do suboru primerFound.txt
-3. Nasledne zavolam skript splitDnaByPrimer.py ktory bude hladat primery v txt bude ulozeny do Primersfound.
-4. Nasledne zavolam skript SelectFromPrimer. ktory my z predosleho txt vytvori nove txt ale o cistene od primera
-5. Nasledne zavolam skript postPrimerClover.py ktory mi z toho dat ocisteneho od primera vytvori clover file a ten najde clustre a zacne zarovnavat a pokial najde clustre pozadovanej 
+a nan zavolam vlastni multialignment algoritmus ktory mi vratiprimér a ulozi ho do suboru primérFound.txt
+3. Nasledne zavolam skript splitDnaByPrimer.py ktory bude hladat priméry v txt bude ulozeny do primérsfound.
+4. Nasledne zavolam skript SelectFromPrimer. ktory my z predosleho txt vytvori nove txt ale o cistene od priméra
+5. Nasledne zavolam skript postPrimerClover.py ktory mi z toho dat ocisteneho od priméra vytvori clover file a ten najde clustre a zacne zarovnavat a pokial najde clustre pozadovanej 
 velkosti co je viac ako 10 nukleotidov tak to ulozi do suboru Aligned_dnaSize-{dist}num-{ClusterSize}id-{count}.txt

@@ -12,8 +12,8 @@ class SeqDnaMap:
     def __init__(self) -> None:
         self.database = {}
 
-    def add_dna(self, dna: str, dna_index: int) -> None:
-        self.database[dna_index] = dna
+    def add_dna(self, DNA: str, dna_index: int) -> None:
+        self.database[dna_index] = DNA
 
     def Get_dna(self, dna_index: int) -> str:
         return self.database[dna_index]
@@ -277,9 +277,9 @@ def align_backtracks(lines: list[str]) -> list[str]:
 
 def DataBeamAlgorithm(reads: list[str], prooning: int = 40) -> list[str]:
     dna_database = SeqDnaMap()
-    for i, dna in enumerate(reads):
+    for i, DNA in enumerate(reads):
         dna_database.add_dna(dna, i)
-    lines = [Line(dna_database, i) for i, dna in enumerate(reads)]
+    lines = [Line(dna_database, i) for i, DNA in enumerate(reads)]
     Out = NaiveMultiAlignment(lines, prooning)
     Align = align_backtracks([res.getBacktrackRecursive() for res in Out])
     return Align

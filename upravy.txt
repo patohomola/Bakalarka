@@ -1,0 +1,63 @@
+PREHLAD OPRAV (kapitoly a podkapitoly)
+
+1) Pravopis a tvaroslovie (najcastejsie nahrady)
+- sekvenacnych / sekvenačných -> sekvenovaných
+- modela -> modelu
+- popisuje / popisujem (v odbornom texte) -> opisuje / je opísané
+- retiazce -> reťazce
+- prechadzat -> prechádzať
+- nepresnostiam kvôli -> nepresnostiam v dôsledku
+- Problem je ze... -> Problém spočíva v tom, že...
+- Riesenie -> Riešenie
+- Cim vacsi -> Čím väčší
+- konveertovat -> prekonvertovať
+- data / data z pod5 (bez diakritiky) -> dáta / dáta vo formáte pod5
+- vo formátu -> vo formáte
+- lokalné -> lokálne
+- Ulohou -> Úlohou
+
+2) Terminologia (zjednotenie odbornych pojmov)
+- primer / primeru / primerov -> primér / priméru / primérov
+- dna / DNA mix -> jednotne DNA
+- katica -> k-tica (k-mer) tam, kde to bolo významovo vhodné
+- read -> čítanie (v bežnom texte, kde bol vhodný slovenský ekvivalent)
+
+3) Neutralny akademicky styl (neosobna formulacia)
+- "V tejto kapitole sa zameriavam..." -> "V tejto kapitole sú predstavené/opísané..."
+- "som spustil", "som vybral", "som použil" -> "bol spustený", "bol vybraný", "bol použitý"
+- "Aby sme mohli..." -> "Aby bolo možné..."
+- priame osobne formulacie boli prepisane na neosobny odborny styl
+- "čo ho činí ideálnym nástrojom pro..." -> "vďaka čomu predstavuje ideálny nástroj na..."
+- "vykonávam postupne / môžem použiť" -> neosobné formulácie typu "sa vyberie / je možné použiť"
+
+4) Opravy medzier a preklepov
+- saprimér -> sa primér
+- bolprimér -> bol primér
+- práciprimér -> práci primér
+- Keďžeprimér -> Keďže primér
+- sekúncií -> sekvencií
+- seqvencie nezacnú odlišovat -> sekvencie nezačnú odlišovať
+- dobry -> vhodný / dobrý podľa kontextu
+- Kedze -> keďže
+- být -> byť
+
+5) Odstranenie technickych markerov
+- boli odstranene vsetky markery typu:
+  % COPILOT FIX START
+  % COPILOT FIX END
+
+6) LaTeX a uvodzovky
+- problematicke ASCII uvodzovky v odbornych vyrazoch boli nahradene LaTeX-safe zapisom cez \enquote{...}
+- opravene boli najma vyrazy:
+  - "coverage" -> \enquote{coverage}
+  - "depth of coverage" -> \enquote{depth of coverage}
+  - "ID sekvencia" -> \enquote{ID sekvencia}
+- cielom bolo odstranit rozbite zobrazenie typu mojibake v PDF vystupe
+
+7) Upravy viet pre plynulost a odbornost
+- viac viet bolo preformulovanych, aby boli gramaticky spravne,
+  terminologicky konzistentne a vhodne pre bakalarsky akademicky text.
+
+Poznamka:
+- Komentare v kodovych/poznamkovych castiach (.tex komentare so znakom %) neboli prioritne prepisovane,
+  ak neovplyvnovali hlavny text kapitol a podkapitol.

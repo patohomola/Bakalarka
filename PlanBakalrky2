@@ -4,7 +4,7 @@ Motivácia: DNA storage, nanopórové čítanie, problém chýb.
 Cieľ práce: pripraviť pipeline a podklad pre model narušenia informácie.
 2. Teoretické východiská
 
-DNA, primer, orientácia a komplement reťazca.
+DNA, primér, orientácia a komplement reťazca.
 Nanopore + Dorado (čo robí basecalling).
 Clover (vstupy/výstupy, princíp klastrovania).
 3. Dáta a počiatočný workflow
@@ -17,13 +17,13 @@ Krok 2: konverzia do formátu pre Clover (txt/fasta).
 Spustenie Clover na pôvodných dátach.
 Výsledok: veľký klaster (~40k), ale zhoda len na začiatku.
 Záver: pôvodný predpoklad neplatí.
-5. Zmena prístupu: primer-first stratégia
+5. Zmena prístupu: primér-first stratégia
 
-Identifikácia primeru ako príčiny „falošnej“ zhody.
-Vlastný skript: nájdenie primeru v read-och.
-Extrakcia úsekov za primerom (po ďalší primer/koniec).
-Pozorovanie: primer v ~každom 4. reťazci (orientácia/komplement).
-6. Druhý experiment: klastrovanie po odstránení primeru
+Identifikácia priméru ako príčiny „falošnej“ zhody.
+Vlastný skript: nájdenie priméru v read-och.
+Extrakcia úsekov za primérom (po ďalší primér/koniec).
+Pozorovanie:primér v ~každom 4. reťazci (orientácia/komplement).
+6. Druhý experiment: klastrovanie po odstránení priméru
 
 Opätovné klastrovanie vyčistených reťazcov.
 Výsledok: dlhšie a stabilnejšie zhodné úseky po zarovnaní.

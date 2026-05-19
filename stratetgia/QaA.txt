@@ -24,8 +24,8 @@ Formát:
 [STATUS] OTVORENÁ – v závere explicitne rozdeliť „Dosiahnuté výsledky“ a „Budúca práca“.
 ---
 
-[ODSEK] Kap.5 / DnaSeqvencing / TODO odkazy (dataset, samtools, primer)
-[O] Planujes doplnit vsetky TODO odkazy (dataset, samtools, vysvetlenie primeru)?
+[ODSEK] Kap.5 / DnaSeqvencing / TODO odkazy (dataset, samtools, primér)
+[O] Planujes doplnit vsetky TODO odkazy (dataset, samtools, vysvetlenie priméru)?
 [A] Ano, vsetky TODO doplnim
 [STATUS] OTVORENÁ – doplniť pred finalnou verziou.
 ---
@@ -84,10 +84,10 @@ Formát:
 [STATUS] OTVORENÁ – odporúča sa pridať tabuľku alebo schému 4 variantov (forward/reverse x original/komplement).
 ---
 
-[ODSEK] Kap.3.2 / KdeSuDlheRetazce / 05_prva_hypoteza (DNA primer definicia)
-[O] Je pojem "DNA primer" definovany pre nebiologickeho citatela pred prvym pouzitim?
+[ODSEK] Kap.3.2 / KdeSuDlheRetazce / 05_prva_hypoteza (DNAprimér definicia)
+[O] Je pojem "DNA primér" definovany pre nebiologickeho citatela pred prvym pouzitim?
 [A] "neni definovany treba doplnit"
-[STATUS] OTVORENÁ – doplniť definíciu DNA primeru (krátka jednovláknová sekvencia ktorá slúži ako štartovací bod replikácie).
+[STATUS] OTVORENÁ – doplniť definíciu DNA priméru (krátka jednovláknová sekvencia ktorá slúži ako štartovací bod replikácie).
 ---
 
 [ODSEK] Kap.3.2 / LokalneVyhladavanie / 02_biopython_align (nastavenia alignera)
@@ -124,7 +124,7 @@ Formát:
 [O] Ktory MSA algoritmus skutocne pouzivas a je zdovodneny vyber?
 [A] "Vlastny algoritmus, chcem urobit vlastny clanok, neviem ako to napisat ze som pouzil vlastny"
 [A2] "do stane riadky vyhody vybere zarovnany usek dokym je zarovnany"
-[A3] "algoritmus dostane riadky dna a vrati zarovnane riadky ktore zarovna do kym tie retazce budu podobne, teda nezarovna cely riadok ale cast od zaciatku"
+[A3] "algoritmus dostane riadky DNA a vrati zarovnane riadky ktore zarovna do kym tie retazce budu podobne, teda nezarovna cely riadok ale cast od zaciatku"
 [STATUS] OTVORENÁ – DOLEZITE: V bakalarke treba jasne uviest: "Bol implementovany vlastny MSA algoritmus inspirovany [princip]. Detailny popis je mimo rozsahu tejto prace." Nesmiez tvrdit ze pouzivas MUSCLE/MAFFT ak pouzivas vlastny.
 ---
 

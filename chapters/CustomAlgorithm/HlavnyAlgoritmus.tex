@@ -193,16 +193,16 @@ def NaiveMultiAlignment(lines: list[Line], max_score_drop: int = 20) -> list[Lin
         return dna_seq[self.seq_index:]
 \end{lstlisting}
 \end{comment}
-Multiple sequence alignment (MSA) je problém zarovnania viacerých sekvencií, ktorý sa často vyskytuje v bioinformatike. Cieľom MSA je nájsť optimálne zarovnanie medzi viacerými sekvenciami, ktoré minimalizuje počet nesúladov a medzier. V tejto časti popisujem vlastný algoritmus na zarovnanie viacerých sekvencií, ktorý som implementoval v Pythone.
+Multiple sequence alignment (MSA) je problém zarovnania viacerých sekvencií, ktorý sa často vyskytuje v bioinformatike. Cieľom MSA je nájsť optimálne zarovnanie medzi viacerými sekvenciami, ktoré minimalizuje počet nesúladov a medzier. V tejto časti je opísaný vlastný algoritmus na zarovnanie viacerých sekvencií implementovaný v jazyku Python.
 \\
-\\Pre tento Algoritmus predpokladám, že máme k dispozícii sequencie DNA z zhlukovania od algoritmu clover, ktory zhlukuje sekvencie, podla toho, ako začínajú. Takze mozeme predpokladat, ze zaciatok sekvencii v jednom zhluku je rovnaky a zarovnanie zacina od zaciatku a dalej sa rozvetvuje kvoli chybam, ktore sa vyskytuju pri citani dna.
-Algoritmus využíva prístup podobný beam search, kde pre každú sekvenciu udržiavame množinu možných zarovnaní (vetiev) a iteratívne ich rozširujeme o ďalší znak z konsenzuálnej sekvencie. Pri každom kroku vyberáme najčastejší znak (konsenzus) a generujeme nové vetvy pre každý možný typ chyby (zhoda, zámienka, vloženie, vynechanie). Vetvy sú následne filtrované na základe skóre, aby sme udržali len tie najpravdepodobnejšie zarovnania. Tento proces pokračuje, kým nedosiahneme koniec všetkých sekvencií alebo kým sa seqvencie nezacnú výrazne odlišovat od seba, čo indikuje, že neexistuje jasný konsenzus.
+\\Pre tento algoritmus sa predpokladá, že sú k dispozícii sekvencie DNA zo zhlukovania algoritmom Clover, ktorý zhlukuje sekvencie podľa ich začiatku. Z toho vyplýva predpoklad, že začiatok sekvencií v jednom zhluku je rovnaký a zarovnanie začína od začiatku, pričom sa ďalej rozvetvuje v dôsledku chýb vznikajúcich pri čítaní DNA.
+Algoritmus využíva prístup podobný beam search, kde sa pre každú sekvenciu udržiava množina možných zarovnaní (vetiev) a iteratívne sa rozširuje o ďalší znak z konsenzuálnej sekvencie. Pri každom kroku sa vyberá najčastejší znak (konsenzus) a generujú sa nové vetvy pre každý možný typ chyby (zhoda, zámena, vloženie, vynechanie). Vetvy sa následne filtrujú na základe skóre tak, aby zostali len najpravdepodobnejšie zarovnania. Tento proces pokračuje, kým sa nedosiahne koniec všetkých sekvencií alebo kým sa sekvencie nezačnú výrazne odlišovať, čo indikuje, že neexistuje jasný konsenzus.
 
 \begin{comment}
     Formálna špecifikácia vstupu/výstupu
 Čo presne vstupuje (zhluk sekvencií, predpoklad spoločného začiatku), čo je výsledok (zarovnania, skóre, konsenzus).
 
-Skórovacia funkcia
+Skórujúcia funkcia
 Presné hodnoty za match/mismatch/insert/delete a prečo sú zvolené práve takto.
 
 Reprezentácia stavu (Line)

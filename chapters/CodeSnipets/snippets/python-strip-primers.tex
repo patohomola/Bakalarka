@@ -8,17 +8,17 @@
     primers = ast.literal_eval(datas)
 
     newLines = []
-    for (line, linePrimes) in zip(lines,primers):
+    for (line, linePrimers) in zip(lines, primers):
         prevValue = -1
-        for prime in linePrimes:
+        for primer in linePrimers:
             if(prevValue!=-1 ):
-                if prevValue-prime<50:
+                if prevValue-primer<50:
                     continue
-            newline = line[prime:prevValue]
+            newline = line[primer:prevValue]
             if(len(newline)<50):
                 continue
             newLines.append(newline)
-            prevValue = prime
+            prevValue = primer
 
     WriteLines=[]
     for (i,line) in enumerate(newLines):

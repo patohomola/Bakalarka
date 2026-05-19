@@ -1,0 +1,22 @@
+{
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk title pdf",
+      "tools": [
+        "latexmk_title_pdf"
+      ]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk_title_pdf",
+      "command": "latexmk",
+      "args": [
+        "-pdf",
+        "-interaction=nonstopmode",
+        "-jobname=Spracovanie_udajov_pre_modelovanie_narusenia_informacie_uchovavanej_v_DNA_pamati_typu_Nanopor",
+        "%DOC%"
+      ]
+    }
+  ]
+}

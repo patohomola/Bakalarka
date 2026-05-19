@@ -1,4 +1,4 @@
-%!LW recipe=pdflatex → makeglossaries → biber → pdflatex ×2
+%!LW recipe=latexmk title pdf
 %\PassOptionsToPackage{table}{xcolor}
 \documentclass[12pt]{article}
 
@@ -46,7 +46,7 @@
 % Thesis metadata
 % Bachelor thesis info
 \ifdefined\isBachelorThesis
-\title{Spracovanie údajov pre modelovanie narušenia informácie uchovávané v pamäti DNA typu nanopor}
+\title{Spracovanie údajov pre modelovanie narušenia informácie uchovávanej v DNA pamäti typu Nanopor}
 \author{Patrik Homola}
 \def\thesisHeader{Bakalárska práca} 
 \fi
@@ -54,13 +54,13 @@
 % Master thesis info 
 \ifdefined\isMasterThesis
 \title{Názov diplomovej práce}
-\author{Bc. Peter Farkas}
+\author{Patrik Homola}
 \def\thesisHeader{Diplomová práca}
 \fi
 
 \def\uid{FI-11145-18967} % Replace with your own student ID
-\def\supervisor{doc. RNDr. Peter Farkas, PhD.}
-\def\consultant{Mgr. Peter Jarnvars} % Optional, remove in titlepage-alt
+\def\supervisor{prof. Ing. Peter Farkaš, DrSc.}
+\def\consultant{Ing. Tomáš Jarnvárš, PhD.} % Optional, remove in titlepage-alt
 \def\thesisyear{2026}
 
 % University metadata
@@ -139,7 +139,7 @@
 \include{essentials/titlepage-alt}
 %
 % Replace file with your own:
-\includepdf{essentials/assignment.pdf}
+\includepdf{essentials/Anotacia.pdf}
 %
 % Customize these files:
 \include{essentials/acknowledgment}
@@ -163,7 +163,7 @@
 %%%%%%% DOCUMENT BODY %%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Úvod}
-V tejto bakalárskej práci sa venujem problematike ukladania dát do DNA a spracovaniu sekvenačných dát získaných pomocou nanopórového sekvenovania. Práca je rozdelená do piatich hlavných častí: úvod, opis dát, príprava praktickej realizácie, vlastné vytvorenie riešenia a kritické zhodnotenie so zhrnutím.
+Táto bakalárska práca sa zaoberá problematikou ukladania dát do DNA a spracovaním sekvenovaných dát získaných pomocou nanopórového sekvenovania(sequencing). Práca je rozdelená do piatich hlavných častí: úvod, opis dát, príprava praktickej realizácie, vlastné vytvorenie riešenia a kritické zhodnotenie so zhrnutím.
 
 \input{chapters/01_Uvod/motivacia}
 
@@ -173,7 +173,7 @@ V tejto kapitole sú definované hlavné ciele a zadanie bakalárskej práce.
 \input{chapters/02_CieleAZadanie/NaplnUlohy}
 
 \section{Opis dát}
-V tejto kapitole sa zameriavam na charakteristiku dát, ktoré sú k dispozícii pre túto prácu, a na problémy spojené s ich spracovaním.
+V tejto kapitole je opísaná charakteristika dát, ktoré sú k dispozícii pre túto prácu, a problémy spojené s ich spracovaním.
 \subsection{V akom stave sú dáta k dispozícii}
 \input{chapters/03_OpisDat/VAkomStaveSuData/AkeDataMamDispozicii}
 
@@ -186,7 +186,7 @@ V tejto kapitole sa zameriavam na charakteristiku dát, ktoré sú k dispozícii
 \input{chapters/04_PraktickaRealizacia/TeoretickeOkienko}
 
 \section{Výber nástrojov a metód na realizáciu práce}
-v tejto kapitole sú predstavené nástroje a metódy, ktoré boli vybrané pre realizáciu praktickej časti práce, vrátane ich základných charakteristík a dôvodov výberu.
+V tejto kapitole sú predstavené nástroje a metódy, ktoré boli vybrané pre realizáciu praktickej časti práce, vrátane ich základných charakteristík a dôvodov výberu.
 
 \input{chapters/04_PraktickaRealizacia/Dorado}
 \input{chapters/04_PraktickaRealizacia/Clover}
@@ -194,7 +194,7 @@ v tejto kapitole sú predstavené nástroje a metódy, ktoré boli vybrané pre 
 \input{chapters/04_PraktickaRealizacia/PythonBio}
 
 \section{Praktická realizácia}
-V tejto časti popisujem konkrétne kroky, ktoré boli vykonané počas riešenia práce, vrátane spracovania dát, aplikácie algoritmov a vyhodnotenia výsledkov.
+V tejto časti sú popísané konkrétne kroky, ktoré boli vykonané počas riešenia práce, vrátane spracovania dát, aplikácie algoritmov a vyhodnotenia výsledkov.
 \input{chapters/05_VytvoreniePrace/DnaSekvencovanie}
 \input{chapters/04_PraktickaRealizacia/SpustenieClusteringu}
 \input{chapters/05_VytvoreniePrace/LokalneVyhladavanieVyriesenie}
@@ -202,7 +202,7 @@ V tejto časti popisujem konkrétne kroky, ktoré boli vykonané počas riešeni
 
 
 \section{Kritické zhodnotenie a zhrnutie}
-V práci boli predstavené možnosti a výzvy spojené s ukladaním dát do DNA a spracovaním sekvenačných dát z nanopórového sekvenovania. Navrhnuté a implementované metódy prispievajú k efektívnejšiemu spracovaniu a analýze týchto dát. Cieľ bakalárskej práce bol splnený.
+V práci boli predstavené možnosti a výzvy spojené s ukladaním dát do DNA a spracovaním sekvenovaných dát z nanopórového sekvenovania. Navrhnuté a implementované metódy prispievajú k efektívnejšiemu spracovaniu a analýze týchto dát. Cieľ bakalárskej práce bol splnený.
 \input{chapters/06_Zaver/Zaver}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%

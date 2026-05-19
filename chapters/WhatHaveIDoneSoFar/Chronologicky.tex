@@ -1,15 +1,15 @@
-Najprv som stiahol potrebný dataset z verejného repozitára %Todo: doplniť odkaz na dataset
-Potom som nan zavolal Dorado basecaller, ktorý som použil na prekladanie surových pod5 súborov do formátu BAM.
-Potom som hladal dobry clustering algoritmus, ktory by mi pomohol zoskupit sekvencie dna do klastrov.
-Následne som použil algoritmus Clover, ktorý zoskupil sekvencie do jednotlivých klastrov na základe ich podobnosti.
-zavolal som MultiAlignment algoritmus ktory my zarovnal retazce do tej dlzky dokym boli rovnake.
-Ukazalo sa ze jeden dna Cluster obsahoval viac akom 37000 sekvencií, co bolo neobvykle veľké množstvo sekvencií v jednom
-klustri ktore mali cez dlzku ako 43 nukleotidov zhodne, co bolo nepravdepodobné, že by se stalo náhodou.
-Vznikla teoria ze som narazil na dna Primer.
+Najprv bol stiahnutý potrebný dataset z verejného repozitára. %Todo: doplniť odkaz na dataset
+Následne bol použitý Dorado basecaller na prekladanie surových pod5 súborov do formátu BAM.
+Potom bol vyhľadaný vhodný klastrovací algoritmus(clustering) na zoskupenie DNA sekvencií do klastrov.
+Na tento účel bol použitý algoritmus Clover, ktorý zoskupil sekvencie do jednotlivých klastrov na základe ich podobnosti.
+Následne bol spustený algoritmus MultiAlignment, ktorý zarovnal reťazce po dĺžku ich spoločnej zhody.
+Ukázalo sa, že jeden DNA klaster(cluster) obsahoval viac ako 37 000 sekvencií, čo predstavovalo neobvykle veľké množstvo sekvencií v jednom klastri
+so zhodou dlhšou ako 43 nukleotidov, čo je nepravdepodobné ako náhodný jav.
+Na základe toho vznikla hypotéza o prítomnosti DNA priméra.
 
-pouzil som sa clustrovat dna za tym primerom ale nic som nenasiel.
-Tak som sa pokusal ten dna primer vyhladat ostatnych retazcov a nie len na zaciatku retazca, ale aj dalej v retazci,
-a znovu som pouzil clover, ale tentokrát som pouzil iba zvyšné časti sekvencií bez dna primerov.
-Data odcistene od dna primerov sa znovu zoskupili do klastrov, ktoré teraz obsahovali sekvencie,
-ktoré mali zhodu nielen na začiatku, ale aj ďalej v retazci.
+DNA za týmto primérom sa následne klastrovala, avšak bez relevantného výsledku.
+Preto bol DNA primér vyhľadávaný aj v ostatných reťazcoch, nielen na začiatku reťazca, ale aj v jeho ďalších častiach,
+a algoritmus Clover bol opätovne použitý, tentokrát iba na zvyšné časti sekvencií bez DNA primérov.
+Dáta očistené od DNA primérov sa znovu zoskupili do klastrov, ktoré teraz obsahovali sekvencie
+s podobnosťou nielen na začiatku, ale aj ďalej v reťazci.
 

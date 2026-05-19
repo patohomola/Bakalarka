@@ -12,7 +12,7 @@ def findOcurences(primer: str, reads: List[str]):
 
     sizeOfReads = len(reads)
 
-    PrimersFound = []
+    primersFound = []
     for read_id, read in enumerate(reads):
         read = read.strip()
 
@@ -36,6 +36,6 @@ def findOcurences(primer: str, reads: List[str]):
             # print(f"Read {read_id}: {read_start}-{read_end}, score={aln.score}")
         if read_id % 1000 == 0:
             print(f"Read {read_id}/ {sizeOfReads}:{lastIds}")
-        PrimersFound.append(lastIds)
-    return PrimersFound
+        primersFound.append(lastIds)
+    return primersFound
 \end{lstlisting}
